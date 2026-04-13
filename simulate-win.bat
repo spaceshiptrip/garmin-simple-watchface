@@ -12,4 +12,4 @@ if %ERRORLEVEL% neq 0 (
 )
 
 echo Launching simulator...
-call "%SDK_BIN%\monkeydo.bat" build.prg epix2pro51mm
+start "" "%SDK_BIN%\monkeydo.bat" build.prg epix2pro51mm

@@ -8,6 +8,13 @@ import Toybox.Time.Gregorian;
 
 class WatchFaceView extends WatchUi.WatchFace {
 
+    // ── Tuning knobs ─────────────────────────────────────────────────────
+    // Stretch the time digits vertically and/or horizontally.
+    // 1.0 = no change, 1.20 = 20% larger, 0.90 = 10% smaller, etc.
+    const TIME_SCALE_Y = 2.00f;   // height scale  <-- tweak me
+    const TIME_SCALE_X = 1.20f;   // width  scale  <-- tweak me
+    // ─────────────────────────────────────────────────────────────────────
+
     function initialize() {
         WatchFace.initialize();
     }
@@ -89,11 +96,12 @@ class WatchFaceView extends WatchUi.WatchFace {
             bdc.drawText(bx + 1, 0, timeFont, timeStr, Graphics.TEXT_JUSTIFY_CENTER);
             bdc.drawText(bx,     0, timeFont, timeStr, Graphics.TEXT_JUSTIFY_CENTER);
 
-            // Scale Y by 1.15 (width unchanged), keep vertical center the same
+            // Apply TIME_SCALE_X / TIME_SCALE_Y, keeping the visual center fixed
             var xform = new Graphics.AffineTransform();
-            xform.scale(1.0f, 1.15f);
-            var scaledH = (tH * 1.15f).toNumber();
-            var drawX = cx - bbW / 2;
+            xform.scale(TIME_SCALE_X, TIME_SCALE_Y);
+            var scaledW = (bbW  * TIME_SCALE_X).toNumber();
+            var scaledH = (tH   * TIME_SCALE_Y).toNumber();
+            var drawX = cx - scaledW / 2;
             var drawY = timeY + tH / 2 - scaledH / 2;
             dc.drawBitmap2(drawX, drawY, bb, {:transform => xform});
         } else {
