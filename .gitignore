@@ -1,0 +1,26 @@
+# Compiled output
+*.prg
+*.prg.debug.xml
+
+# Build artifacts
+bin/
+gen/
+
+# Developer key (never commit this)
+developer_key
+*.der
+*.pem
+*.key
+
+# SDK and device files
+.idea/
+.vscode/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Connect IQ simulator state
+*.iq

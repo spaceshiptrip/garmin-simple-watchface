@@ -1,0 +1,1400 @@
+[ @file = "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Graphics,1,14,22]; ]
+import Toybox.Graphics;
+[ @file = "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Lang,2,14,18]; ]
+import Toybox.Lang;
+[ @file = "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [System,3,14,20]; ]
+import Toybox.System;
+[ @file = "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [WatchUi,4,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc"; @line = 5; @symbol_importdef<0> = [Toybox,5,7,13]; @symbol_importdef<1> = [ActivityMonitor,5,14,29]; ]
+import Toybox.ActivityMonitor;
+[ @file = "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc"; @line = 6; @symbol_importdef<0> = [Toybox,6,7,13]; @symbol_importdef<1> = [Time,6,14,18]; ]
+import Toybox.Time;
+[ @file = "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc"; @line = 7; @symbol_importdef<0> = [Toybox,7,7,13]; @symbol_importdef<1> = [Time,7,14,18]; @symbol_importdef<2> = [Gregorian,7,19,28]; ]
+import Toybox.Time.Gregorian;
+[ @file = "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc"; @line = 9; @symbol_classdef = [WatchFaceView,9,6,19]; @symbol_extends<0> = [WatchUi,9,28,35]; @symbol_extends<1> = [WatchFace,9,36,45]; ]
+class WatchFaceView extends WatchUi.WatchFace {
+    [ @file = "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc"; @line = 9; ]
+    <init> {
+    }
+    [ @file = "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc"; @line = 9; ]
+    static
+    <init> {
+    }
+    [ @file = "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc"; @line = 11; @symbol_functiondef = [initialize,11,13,23]; ]
+    function initialize() as Void {
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_11_26_13_4_start:
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 12 8 ]
+        symbol [ WatchFace %tmp.2 12 8 17 ];
+        %tmp.2 = getv ? :WatchFace;
+        symbol [ initialize %tmp.3 12 18 28 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_11_26_13_4_stop:
+    }
+    [ @file = "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc"; @line = 15; @symbol_functiondef = [onLayout,15,13,21]; @symbol_param<0> = [dc,15,22,24]; @symbol_param<0>_type<0> = [Graphics,15,28,36]; @symbol_param<0>_type<1> = [Dc,15,37,39]; ]
+    function onLayout(dc as Graphics.Dc) as Void {
+    }
+    [ @file = "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc"; @line = 18; @symbol_functiondef = [onShow,18,13,19]; ]
+    function onShow() as Void {
+    }
+    [ @file = "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc"; @line = 21; @symbol_functiondef = [onHide,21,13,19]; ]
+    function onHide() as Void {
+    }
+    [ @file = "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc"; @line = 25; @symbol_functiondef = [formatWithCommas,25,13,29]; @symbol_param<0> = [n,25,30,31]; @symbol_param<0>_type<0> = [Lang,25,35,39]; @symbol_param<0>_type<1> = [Number,25,40,46]; @symbol_return<0> = [Lang,25,51,55]; @symbol_return<1> = [String,25,56,62]; ]
+    function formatWithCommas(n as Lang.Number) as Lang.String {
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_25_63_37_4_start:
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 26 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_25_63_37_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_25_63_37_4_stop" ]
+        %s.1 = local;
+        symbol [ s %s.1 26 12 13 ];
+        %tmp.1 = lgetv %n;
+        symbol [ n %tmp.1 26 16 17 ];
+        symbol [ toString %tmp.2 26 18 26 ];
+        %tmp.2 = getv function %tmp.1 :toString;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %s.1 %tmp.3;
+        symbol [ s %s.1 26 12 13 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 27 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_25_63_37_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_25_63_37_4_stop" ]
+        %result.2 = local;
+        symbol [ result %result.2 27 12 18 ];
+        %tmp.4 = "";
+        lputv %result.2 %tmp.4;
+        symbol [ result %result.2 27 12 18 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 28 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_25_63_37_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_25_63_37_4_stop" ]
+        %len.3 = local;
+        symbol [ len %len.3 28 12 15 ];
+        %tmp.5 = lgetv %s.1;
+        symbol [ s %tmp.5 28 18 19 ];
+        symbol [ length %tmp.6 28 20 26 ];
+        %tmp.6 = getv function %tmp.5 :length;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        lputv %len.3 %tmp.7;
+        symbol [ len %len.3 28 12 15 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 29 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_25_63_37_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_25_63_37_4_stop" ]
+        %mod.4 = local;
+        symbol [ mod %mod.4 29 12 15 ];
+        %tmp.8 = lgetv %len.3;
+        symbol [ len %tmp.8 29 18 21 ];
+        %tmp.9 = 3;
+        %tmp.10 = mod %tmp.8 %tmp.9;
+        lputv %mod.4 %tmp.10;
+        symbol [ mod %mod.4 29 12 15 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 30 8 ]
+        for @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_30_8_35_8_for_test @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_30_8_35_8_for_incr @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_30_8_35_8_for_end;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_30_8_35_8_for_init:
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_30_8_35_8_for_begin" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_30_8_35_8_for_end" ]
+        %i.5 = local;
+        symbol [ i %i.5 30 17 18 ];
+        %tmp.11 = 0;
+        lputv %i.5 %tmp.11;
+        symbol [ i %i.5 30 17 18 ];
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_30_8_35_8_for_test:
+        %tmp.12 = lgetv %i.5;
+        symbol [ i %tmp.12 30 24 25 ];
+        %tmp.13 = lgetv %len.3;
+        symbol [ len %tmp.13 30 28 31 ];
+        %tmp.14 = lt %tmp.12 %tmp.13;
+        bf %tmp.14 @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_30_8_35_8_for_end;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_30_8_35_8_for_begin:
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_30_38_35_8_start:
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 31 12 ]
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_31_12_33_12_if_stmt:
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_31_16_31_38_begin:
+        %tmp.15 = lgetv %i.5;
+        symbol [ i %tmp.15 31 16 17 ];
+        %tmp.16 = 0;
+        %tmp.17 = gt %tmp.15 %tmp.16;
+        bf %tmp.17 @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_31_12_33_12_if_end;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_31_25_31_38_true:
+        %tmp.18 = lgetv %i.5;
+        symbol [ i %tmp.18 31 26 27 ];
+        %tmp.19 = 3;
+        %tmp.20 = mod %tmp.18 %tmp.19;
+        %tmp.21 = lgetv %mod.4;
+        symbol [ mod %tmp.21 31 35 38 ];
+        %tmp.22 = eq %tmp.20 %tmp.21;
+        push %tmp.22;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_31_25_31_38_end:
+        %tmp.23 = phi [%tmp.17 @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_31_16_31_38_begin] [%tmp.22 @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_31_25_31_38_true] [%tmp.23 @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_31_25_31_38_end];
+        bf %tmp.23 @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_31_12_33_12_if_end;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_31_12_33_12_if_true:
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_31_41_33_12_start:
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 32 16 ]
+        %tmp.24 = lgetv %result.2;
+        symbol [ result %tmp.24 32 25 31 ];
+        %tmp.25 = ",";
+        %tmp.26 = add %tmp.24 %tmp.25;
+        lputv %result.2 %tmp.26;
+        symbol [ result %result.2 32 16 22 ];
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_31_41_33_12_stop:
+        goto @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_31_12_33_12_if_end;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_31_12_33_12_if_end:
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 34 12 ]
+        %tmp.27 = lgetv %result.2;
+        symbol [ result %tmp.27 34 21 27 ];
+        %tmp.28 = lgetv %s.1;
+        symbol [ s %tmp.28 34 30 31 ];
+        symbol [ substring %tmp.29 34 32 41 ];
+        %tmp.29 = getv function %tmp.28 :substring;
+        %tmp.30 = lgetv %i.5;
+        symbol [ i %tmp.30 34 42 43 ];
+        %tmp.31 = lgetv %i.5;
+        symbol [ i %tmp.31 34 45 46 ];
+        %tmp.32 = 1;
+        %tmp.33 = add %tmp.31 %tmp.32;
+        %tmp.34 = invoke %tmp.28 %tmp.29(%tmp.30, %tmp.33);
+        %tmp.35 = add %tmp.27 %tmp.34;
+        lputv %result.2 %tmp.35;
+        symbol [ result %result.2 34 12 18 ];
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_30_38_35_8_stop:
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_30_8_35_8_for_incr:
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 30 ]
+        %tmp.38 = lgetv %i.5;
+        symbol [ i %tmp.38 30 33 34 ];
+        %tmp.39 = add %tmp.38 1;
+        lputv %i.5 %tmp.39;
+        symbol [ i %i.5 30 33 34 ];
+        goto @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_30_8_35_8_for_test;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_30_8_35_8_for_end:
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 36 8 ]
+        %tmp.40 = lgetv %result.2;
+        symbol [ result %tmp.40 36 15 21 ];
+        ret %tmp.40;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_25_63_37_4_stop:
+    }
+    [ @file = "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc"; @line = 39; @symbol_functiondef = [onUpdate,39,13,21]; @symbol_param<0> = [dc,39,22,24]; @symbol_param<0>_type<0> = [Graphics,39,28,36]; @symbol_param<0>_type<1> = [Dc,39,37,39]; ]
+    function onUpdate(dc as Graphics.Dc) as Void {
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start:
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 40 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %W.1 = local;
+        symbol [ W %W.1 40 12 13 ];
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 40 16 18 ];
+        symbol [ getWidth %tmp.2 40 19 27 ];
+        %tmp.2 = getv function %tmp.1 :getWidth;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %W.1 %tmp.3;
+        symbol [ W %W.1 40 12 13 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 41 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %H.2 = local;
+        symbol [ H %H.2 41 12 13 ];
+        %tmp.4 = lgetv %dc;
+        symbol [ dc %tmp.4 41 16 18 ];
+        symbol [ getHeight %tmp.5 41 19 28 ];
+        %tmp.5 = getv function %tmp.4 :getHeight;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        lputv %H.2 %tmp.6;
+        symbol [ H %H.2 41 12 13 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 42 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %cx.3 = local;
+        symbol [ cx %cx.3 42 12 14 ];
+        %tmp.7 = lgetv %W.1;
+        symbol [ W %tmp.7 42 17 18 ];
+        %tmp.8 = 2;
+        %tmp.9 = div %tmp.7 %tmp.8;
+        lputv %cx.3 %tmp.9;
+        symbol [ cx %cx.3 42 12 14 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 45 8 ]
+        %tmp.10 = lgetv %dc;
+        symbol [ dc %tmp.10 45 8 10 ];
+        symbol [ setColor %tmp.11 45 11 19 ];
+        %tmp.11 = getv function %tmp.10 :setColor;
+        symbol [ Graphics %tmp.12 45 20 28 ];
+        %tmp.12 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.13 45 29 40 ];
+        %tmp.13 = getv %tmp.12 :COLOR_BLACK;
+        symbol [ Graphics %tmp.14 45 42 50 ];
+        %tmp.14 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.15 45 51 62 ];
+        %tmp.15 = getv %tmp.14 :COLOR_BLACK;
+        invoke %tmp.10 %tmp.11(%tmp.13, %tmp.15);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 46 8 ]
+        %tmp.16 = lgetv %dc;
+        symbol [ dc %tmp.16 46 8 10 ];
+        symbol [ clear %tmp.17 46 11 16 ];
+        %tmp.17 = getv function %tmp.16 :clear;
+        invoke %tmp.16 %tmp.17();
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 49 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %steps.4 = local;
+        symbol [ steps %steps.4 49 12 17 ];
+        %tmp.18 = 0;
+        lputv %steps.4 %tmp.18;
+        symbol [ steps %steps.4 49 12 17 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 50 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %actInfo.5 = local;
+        symbol [ actInfo %actInfo.5 50 12 19 ];
+        symbol [ ActivityMonitor %tmp.19 50 22 37 ];
+        %tmp.19 = getm $.Toybox.ActivityMonitor;
+        symbol [ getInfo %tmp.20 50 38 45 ];
+        %tmp.20 = getv function %tmp.19 :getInfo;
+        %tmp.21 = invoke %tmp.19 %tmp.20();
+        lputv %actInfo.5 %tmp.21;
+        symbol [ actInfo %actInfo.5 50 12 19 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 51 8 ]
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_51_8_56_8_if_stmt:
+        %tmp.22 = lgetv %actInfo.5;
+        symbol [ actInfo %tmp.22 51 12 19 ];
+        %tmp.23 = null;
+        %tmp.24 = ne %tmp.22 %tmp.23;
+        bf %tmp.24 @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_51_8_56_8_if_end;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_51_8_56_8_if_true:
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_51_29_56_8_start:
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 52 12 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_51_29_56_8_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_51_29_56_8_stop" ]
+        %s.6 = local;
+        symbol [ s %s.6 52 16 17 ];
+        %tmp.25 = lgetv %actInfo.5;
+        symbol [ actInfo %tmp.25 52 20 27 ];
+        %tmp.26 = as %tmp.25 { (!Null) };
+        symbol [ steps %tmp.27 52 28 33 ];
+        %tmp.27 = getv %tmp.26 :steps;
+        lputv %s.6 %tmp.27;
+        symbol [ s %s.6 52 16 17 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 53 12 ]
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_53_12_55_12_if_stmt:
+        %tmp.28 = lgetv %s.6;
+        symbol [ s %tmp.28 53 16 17 ];
+        %tmp.29 = null;
+        %tmp.30 = ne %tmp.28 %tmp.29;
+        bf %tmp.30 @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_53_12_55_12_if_end;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_53_12_55_12_if_true:
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_53_27_55_12_start:
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 54 16 ]
+        %tmp.31 = lgetv %s.6;
+        symbol [ s %tmp.31 54 24 25 ];
+        %tmp.32 = as %tmp.31 { (!Null) };
+        lputv %steps.4 %tmp.32;
+        symbol [ steps %steps.4 54 16 21 ];
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_53_27_55_12_stop:
+        goto @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_53_12_55_12_if_end;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_53_12_55_12_if_end:
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_51_29_56_8_stop:
+        goto @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_51_8_56_8_if_end;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_51_8_56_8_if_end:
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 57 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %stepsStr.7 = local;
+        symbol [ stepsStr %stepsStr.7 57 12 20 ];
+        %tmp.33 = self;
+        symbol [ formatWithCommas %tmp.34 57 23 39 ];
+        %tmp.34 = getv function %tmp.33 :formatWithCommas;
+        %tmp.35 = lgetv %steps.4;
+        symbol [ steps %tmp.35 57 40 45 ];
+        %tmp.36 = invoke %tmp.33 %tmp.34(%tmp.35);
+        %tmp.37 = " steps";
+        %tmp.38 = add %tmp.36 %tmp.37;
+        lputv %stepsStr.7 %tmp.38;
+        symbol [ stepsStr %stepsStr.7 57 12 20 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 59 8 ]
+        %tmp.39 = lgetv %dc;
+        symbol [ dc %tmp.39 59 8 10 ];
+        symbol [ setColor %tmp.40 59 11 19 ];
+        %tmp.40 = getv function %tmp.39 :setColor;
+        %tmp.41 = 0xAAAAAA;
+        symbol [ Graphics %tmp.42 59 30 38 ];
+        %tmp.42 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.43 59 39 56 ];
+        %tmp.43 = getv %tmp.42 :COLOR_TRANSPARENT;
+        invoke %tmp.39 %tmp.40(%tmp.41, %tmp.43);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 60 8 ]
+        %tmp.44 = lgetv %dc;
+        symbol [ dc %tmp.44 60 8 10 ];
+        symbol [ drawText %tmp.45 60 11 19 ];
+        %tmp.45 = getv function %tmp.44 :drawText;
+        %tmp.46 = lgetv %cx.3;
+        symbol [ cx %tmp.46 60 20 22 ];
+        %tmp.47 = 28;
+        symbol [ Graphics %tmp.48 60 28 36 ];
+        %tmp.48 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.49 60 37 47 ];
+        %tmp.49 = getv %tmp.48 :FONT_SMALL;
+        %tmp.50 = lgetv %stepsStr.7;
+        symbol [ stepsStr %tmp.50 60 49 57 ];
+        symbol [ Graphics %tmp.51 60 59 67 ];
+        %tmp.51 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.52 60 68 87 ];
+        %tmp.52 = getv %tmp.51 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.44 %tmp.45(%tmp.46, %tmp.47, %tmp.49, %tmp.50, %tmp.52);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 63 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %clockTime.8 = local;
+        symbol [ clockTime %clockTime.8 63 12 21 ];
+        symbol [ System %tmp.53 63 24 30 ];
+        %tmp.53 = getm $.Toybox.System;
+        symbol [ getClockTime %tmp.54 63 31 43 ];
+        %tmp.54 = getv function %tmp.53 :getClockTime;
+        %tmp.55 = invoke %tmp.53 %tmp.54();
+        lputv %clockTime.8 %tmp.55;
+        symbol [ clockTime %clockTime.8 63 12 21 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 64 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %hour.9 = local;
+        symbol [ hour %hour.9 64 12 16 ];
+        %tmp.56 = lgetv %clockTime.8;
+        symbol [ clockTime %tmp.56 64 19 28 ];
+        symbol [ hour %tmp.57 64 29 33 ];
+        %tmp.57 = getv %tmp.56 :hour;
+        lputv %hour.9 %tmp.57;
+        symbol [ hour %hour.9 64 12 16 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 65 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %min.10 = local;
+        symbol [ min %min.10 65 12 15 ];
+        %tmp.58 = lgetv %clockTime.8;
+        symbol [ clockTime %tmp.58 65 19 28 ];
+        symbol [ min %tmp.59 65 29 32 ];
+        %tmp.59 = getv %tmp.58 :min;
+        lputv %min.10 %tmp.59;
+        symbol [ min %min.10 65 12 15 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 66 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %timeStr.11 = local;
+        symbol [ timeStr %timeStr.11 66 12 19 ];
+        %tmp.60 = lgetv %hour.9;
+        symbol [ hour %tmp.60 66 22 26 ];
+        symbol [ format %tmp.61 66 27 33 ];
+        %tmp.61 = getv function %tmp.60 :format;
+        %tmp.62 = "%02d";
+        %tmp.63 = invoke %tmp.60 %tmp.61(%tmp.62);
+        %tmp.64 = ":";
+        %tmp.65 = add %tmp.63 %tmp.64;
+        %tmp.66 = lgetv %min.10;
+        symbol [ min %tmp.66 66 50 53 ];
+        symbol [ format %tmp.67 66 54 60 ];
+        %tmp.67 = getv function %tmp.66 :format;
+        %tmp.68 = "%02d";
+        %tmp.69 = invoke %tmp.66 %tmp.67(%tmp.68);
+        %tmp.70 = add %tmp.65 %tmp.69;
+        lputv %timeStr.11 %tmp.70;
+        symbol [ timeStr %timeStr.11 66 12 19 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 69 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %timeFont.12 = local;
+        symbol [ timeFont %timeFont.12 69 12 20 ];
+        symbol [ Graphics %tmp.71 69 23 31 ];
+        %tmp.71 = getm $.Toybox.Graphics;
+        symbol [ FONT_NUMBER_THAI_HOT %tmp.72 69 32 52 ];
+        %tmp.72 = getv %tmp.71 :FONT_NUMBER_THAI_HOT;
+        lputv %timeFont.12 %tmp.72;
+        symbol [ timeFont %timeFont.12 69 12 20 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 70 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %timeY.13 = local;
+        symbol [ timeY %timeY.13 70 12 17 ];
+        %tmp.73 = 155;
+        lputv %timeY.13 %tmp.73;
+        symbol [ timeY %timeY.13 70 12 17 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 71 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %dims.14 = local;
+        symbol [ dims %dims.14 71 12 16 ];
+        %tmp.74 = lgetv %dc;
+        symbol [ dc %tmp.74 71 19 21 ];
+        symbol [ getTextDimensions %tmp.75 71 22 39 ];
+        %tmp.75 = getv function %tmp.74 :getTextDimensions;
+        %tmp.76 = lgetv %timeStr.11;
+        symbol [ timeStr %tmp.76 71 40 47 ];
+        %tmp.77 = lgetv %timeFont.12;
+        symbol [ timeFont %tmp.77 71 49 57 ];
+        %tmp.78 = invoke %tmp.74 %tmp.75(%tmp.76, %tmp.77);
+        lputv %dims.14 %tmp.78;
+        symbol [ dims %dims.14 71 12 16 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 72 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %tW.15 = local;
+        symbol [ tW %tW.15 72 12 14 ];
+        %tmp.79 = lgetv %dims.14;
+        symbol [ dims %tmp.79 72 17 21 ];
+        %tmp.80 = 0;
+        %tmp.81 = agetv %tmp.79 %tmp.80;
+        %tmp.82 = as %tmp.81 Lang.Number;
+        symbol [ Lang %tmp.82 72 28 32 ];
+        symbol [ Number %tmp.82 72 33 39 ];
+        lputv %tW.15 %tmp.82;
+        symbol [ tW %tW.15 72 12 14 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 73 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %tH.16 = local;
+        symbol [ tH %tH.16 73 12 14 ];
+        %tmp.83 = lgetv %dims.14;
+        symbol [ dims %tmp.83 73 17 21 ];
+        %tmp.84 = 1;
+        %tmp.85 = agetv %tmp.83 %tmp.84;
+        %tmp.86 = as %tmp.85 Lang.Number;
+        symbol [ Lang %tmp.86 73 28 32 ];
+        symbol [ Number %tmp.86 73 33 39 ];
+        lputv %tH.16 %tmp.86;
+        symbol [ tH %tH.16 73 12 14 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 74 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %bbW.17 = local;
+        symbol [ bbW %bbW.17 74 12 15 ];
+        %tmp.87 = lgetv %tW.15;
+        symbol [ tW %tmp.87 74 18 20 ];
+        %tmp.88 = 10;
+        %tmp.89 = add %tmp.87 %tmp.88;
+        lputv %bbW.17 %tmp.89;
+        symbol [ bbW %bbW.17 74 12 15 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 76 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %bbRef.18 = local;
+        symbol [ bbRef %bbRef.18 76 12 17 ];
+        symbol [ Graphics %tmp.90 76 20 28 ];
+        %tmp.90 = getm $.Toybox.Graphics;
+        symbol [ createBufferedBitmap %tmp.91 76 29 49 ];
+        %tmp.91 = getv function %tmp.90 :createBufferedBitmap;
+        %tmp.92 = newd 2;
+        %tmp.94 = const :width;
+        symbol [ width %tmp.94 76 52 57 const ];
+        %tmp.95 = lgetv %bbW.17;
+        symbol [ bbW %tmp.95 76 61 64 ];
+        %tmp.96 = dup %tmp.92;
+        %tmp.97 = aputv %tmp.96 %tmp.94 %tmp.95;
+        %tmp.99 = const :height;
+        symbol [ height %tmp.99 76 67 73 const ];
+        %tmp.100 = lgetv %tH.16;
+        symbol [ tH %tmp.100 76 77 79 ];
+        %tmp.101 = dup %tmp.97;
+        %tmp.102 = aputv %tmp.101 %tmp.99 %tmp.100;
+        %tmp.103 = invoke %tmp.90 %tmp.91(%tmp.102);
+        lputv %bbRef.18 %tmp.103;
+        symbol [ bbRef %bbRef.18 76 12 17 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 77 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %bbRaw.19 = local;
+        symbol [ bbRaw %bbRaw.19 77 12 17 ];
+        %tmp.104 = lgetv %bbRef.18;
+        symbol [ bbRef %tmp.104 77 20 25 ];
+        symbol [ get %tmp.105 77 26 29 ];
+        %tmp.105 = getv function %tmp.104 :get;
+        %tmp.106 = invoke %tmp.104 %tmp.105();
+        lputv %bbRaw.19 %tmp.106;
+        symbol [ bbRaw %bbRaw.19 77 12 17 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 78 8 ]
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_78_8_107_8_if_stmt:
+        %tmp.107 = lgetv %bbRaw.19;
+        symbol [ bbRaw %tmp.107 78 12 17 ];
+        symbol [ Graphics %tmp.108 78 29 37 ];
+        %tmp.108 = getm $.Toybox.Graphics;
+        symbol [ BufferedBitmap %tmp.109 78 38 52 ];
+        %tmp.109 = getv %tmp.108 :BufferedBitmap;
+        %tmp.110 = isa %tmp.107 %tmp.109;
+        bf %tmp.110 @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_78_8_107_8_if_else_false;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_78_8_107_8_if_true:
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_78_54_99_8_start:
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 79 12 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_78_54_99_8_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_78_54_99_8_stop" ]
+        %bb.20 = local;
+        symbol [ bb %bb.20 79 16 18 ];
+        %tmp.111 = lgetv %bbRaw.19;
+        symbol [ bbRaw %tmp.111 79 21 26 ];
+        %tmp.112 = as %tmp.111 { (Graphics.BufferedBitmap) };
+        %tmp.113 = as %tmp.112 Graphics.BufferedBitmap;
+        symbol [ Graphics %tmp.113 79 30 38 ];
+        symbol [ BufferedBitmap %tmp.113 79 39 53 ];
+        lputv %bb.20 %tmp.113;
+        symbol [ bb %bb.20 79 16 18 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 81 12 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_78_54_99_8_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_78_54_99_8_stop" ]
+        %bdc.21 = local;
+        symbol [ bdc %bdc.21 81 16 19 ];
+        %tmp.114 = lgetv %bb.20;
+        symbol [ bb %tmp.114 81 22 24 ];
+        symbol [ getDc %tmp.115 81 25 30 ];
+        %tmp.115 = getv function %tmp.114 :getDc;
+        %tmp.116 = invoke %tmp.114 %tmp.115();
+        lputv %bdc.21 %tmp.116;
+        symbol [ bdc %bdc.21 81 16 19 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 82 12 ]
+        %tmp.117 = lgetv %bdc.21;
+        symbol [ bdc %tmp.117 82 12 15 ];
+        symbol [ setColor %tmp.118 82 16 24 ];
+        %tmp.118 = getv function %tmp.117 :setColor;
+        symbol [ Graphics %tmp.119 82 25 33 ];
+        %tmp.119 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.120 82 34 45 ];
+        %tmp.120 = getv %tmp.119 :COLOR_BLACK;
+        symbol [ Graphics %tmp.121 82 47 55 ];
+        %tmp.121 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.122 82 56 67 ];
+        %tmp.122 = getv %tmp.121 :COLOR_BLACK;
+        invoke %tmp.117 %tmp.118(%tmp.120, %tmp.122);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 83 12 ]
+        %tmp.123 = lgetv %bdc.21;
+        symbol [ bdc %tmp.123 83 12 15 ];
+        symbol [ clear %tmp.124 83 16 21 ];
+        %tmp.124 = getv function %tmp.123 :clear;
+        invoke %tmp.123 %tmp.124();
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 84 12 ]
+        %tmp.125 = lgetv %bdc.21;
+        symbol [ bdc %tmp.125 84 12 15 ];
+        symbol [ setColor %tmp.126 84 16 24 ];
+        %tmp.126 = getv function %tmp.125 :setColor;
+        symbol [ Graphics %tmp.127 84 25 33 ];
+        %tmp.127 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.128 84 34 45 ];
+        %tmp.128 = getv %tmp.127 :COLOR_WHITE;
+        symbol [ Graphics %tmp.129 84 47 55 ];
+        %tmp.129 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.130 84 56 73 ];
+        %tmp.130 = getv %tmp.129 :COLOR_TRANSPARENT;
+        invoke %tmp.125 %tmp.126(%tmp.128, %tmp.130);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 85 12 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_78_54_99_8_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_78_54_99_8_stop" ]
+        %bx.22 = local;
+        symbol [ bx %bx.22 85 16 18 ];
+        %tmp.131 = lgetv %bbW.17;
+        symbol [ bbW %tmp.131 85 21 24 ];
+        %tmp.132 = 2;
+        %tmp.133 = div %tmp.131 %tmp.132;
+        lputv %bx.22 %tmp.133;
+        symbol [ bx %bx.22 85 16 18 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 86 12 ]
+        %tmp.134 = lgetv %bdc.21;
+        symbol [ bdc %tmp.134 86 12 15 ];
+        symbol [ drawText %tmp.135 86 16 24 ];
+        %tmp.135 = getv function %tmp.134 :drawText;
+        %tmp.136 = lgetv %bx.22;
+        symbol [ bx %tmp.136 86 25 27 ];
+        %tmp.137 = 2;
+        %tmp.138 = sub %tmp.136 %tmp.137;
+        %tmp.139 = 0;
+        %tmp.140 = lgetv %timeFont.12;
+        symbol [ timeFont %tmp.140 86 36 44 ];
+        %tmp.141 = lgetv %timeStr.11;
+        symbol [ timeStr %tmp.141 86 46 53 ];
+        symbol [ Graphics %tmp.142 86 55 63 ];
+        %tmp.142 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.143 86 64 83 ];
+        %tmp.143 = getv %tmp.142 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.134 %tmp.135(%tmp.138, %tmp.139, %tmp.140, %tmp.141, %tmp.143);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 87 12 ]
+        %tmp.144 = lgetv %bdc.21;
+        symbol [ bdc %tmp.144 87 12 15 ];
+        symbol [ drawText %tmp.145 87 16 24 ];
+        %tmp.145 = getv function %tmp.144 :drawText;
+        %tmp.146 = lgetv %bx.22;
+        symbol [ bx %tmp.146 87 25 27 ];
+        %tmp.147 = 2;
+        %tmp.148 = add %tmp.146 %tmp.147;
+        %tmp.149 = 0;
+        %tmp.150 = lgetv %timeFont.12;
+        symbol [ timeFont %tmp.150 87 36 44 ];
+        %tmp.151 = lgetv %timeStr.11;
+        symbol [ timeStr %tmp.151 87 46 53 ];
+        symbol [ Graphics %tmp.152 87 55 63 ];
+        %tmp.152 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.153 87 64 83 ];
+        %tmp.153 = getv %tmp.152 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.144 %tmp.145(%tmp.148, %tmp.149, %tmp.150, %tmp.151, %tmp.153);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 88 12 ]
+        %tmp.154 = lgetv %bdc.21;
+        symbol [ bdc %tmp.154 88 12 15 ];
+        symbol [ drawText %tmp.155 88 16 24 ];
+        %tmp.155 = getv function %tmp.154 :drawText;
+        %tmp.156 = lgetv %bx.22;
+        symbol [ bx %tmp.156 88 25 27 ];
+        %tmp.157 = 1;
+        %tmp.158 = sub %tmp.156 %tmp.157;
+        %tmp.159 = 0;
+        %tmp.160 = lgetv %timeFont.12;
+        symbol [ timeFont %tmp.160 88 36 44 ];
+        %tmp.161 = lgetv %timeStr.11;
+        symbol [ timeStr %tmp.161 88 46 53 ];
+        symbol [ Graphics %tmp.162 88 55 63 ];
+        %tmp.162 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.163 88 64 83 ];
+        %tmp.163 = getv %tmp.162 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.154 %tmp.155(%tmp.158, %tmp.159, %tmp.160, %tmp.161, %tmp.163);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 89 12 ]
+        %tmp.164 = lgetv %bdc.21;
+        symbol [ bdc %tmp.164 89 12 15 ];
+        symbol [ drawText %tmp.165 89 16 24 ];
+        %tmp.165 = getv function %tmp.164 :drawText;
+        %tmp.166 = lgetv %bx.22;
+        symbol [ bx %tmp.166 89 25 27 ];
+        %tmp.167 = 1;
+        %tmp.168 = add %tmp.166 %tmp.167;
+        %tmp.169 = 0;
+        %tmp.170 = lgetv %timeFont.12;
+        symbol [ timeFont %tmp.170 89 36 44 ];
+        %tmp.171 = lgetv %timeStr.11;
+        symbol [ timeStr %tmp.171 89 46 53 ];
+        symbol [ Graphics %tmp.172 89 55 63 ];
+        %tmp.172 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.173 89 64 83 ];
+        %tmp.173 = getv %tmp.172 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.164 %tmp.165(%tmp.168, %tmp.169, %tmp.170, %tmp.171, %tmp.173);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 90 12 ]
+        %tmp.174 = lgetv %bdc.21;
+        symbol [ bdc %tmp.174 90 12 15 ];
+        symbol [ drawText %tmp.175 90 16 24 ];
+        %tmp.175 = getv function %tmp.174 :drawText;
+        %tmp.176 = lgetv %bx.22;
+        symbol [ bx %tmp.176 90 25 27 ];
+        %tmp.177 = 0;
+        %tmp.178 = lgetv %timeFont.12;
+        symbol [ timeFont %tmp.178 90 36 44 ];
+        %tmp.179 = lgetv %timeStr.11;
+        symbol [ timeStr %tmp.179 90 46 53 ];
+        symbol [ Graphics %tmp.180 90 55 63 ];
+        %tmp.180 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.181 90 64 83 ];
+        %tmp.181 = getv %tmp.180 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.174 %tmp.175(%tmp.176, %tmp.177, %tmp.178, %tmp.179, %tmp.181);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 93 12 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_78_54_99_8_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_78_54_99_8_stop" ]
+        %xform.23 = local;
+        symbol [ xform %xform.23 93 16 21 ];
+        symbol [ Graphics %tmp.184 93 28 36 ];
+        %tmp.184 = getm $.Toybox.Graphics;
+        symbol [ AffineTransform %tmp.185 93 37 52 ];
+        %tmp.185 = getv function ? %tmp.184 :AffineTransform;
+        %tmp.182 = newc %tmp.185 ();
+        lputv %xform.23 %tmp.182;
+        symbol [ xform %xform.23 93 16 21 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 94 12 ]
+        %tmp.186 = lgetv %xform.23;
+        symbol [ xform %tmp.186 94 12 17 ];
+        symbol [ scale %tmp.187 94 18 23 ];
+        %tmp.187 = getv function %tmp.186 :scale;
+        %tmp.188 = 1.0f;
+        %tmp.189 = 1.15f;
+        invoke %tmp.186 %tmp.187(%tmp.188, %tmp.189);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 95 12 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_78_54_99_8_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_78_54_99_8_stop" ]
+        %scaledH.24 = local;
+        symbol [ scaledH %scaledH.24 95 16 23 ];
+        %tmp.190 = lgetv %tH.16;
+        symbol [ tH %tmp.190 95 27 29 ];
+        %tmp.191 = 1.15f;
+        %tmp.192 = mul %tmp.190 %tmp.191;
+        symbol [ toNumber %tmp.193 95 39 47 ];
+        %tmp.193 = getv function %tmp.192 :toNumber;
+        %tmp.194 = invoke %tmp.192 %tmp.193();
+        lputv %scaledH.24 %tmp.194;
+        symbol [ scaledH %scaledH.24 95 16 23 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 96 12 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_78_54_99_8_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_78_54_99_8_stop" ]
+        %drawX.25 = local;
+        symbol [ drawX %drawX.25 96 16 21 ];
+        %tmp.195 = lgetv %cx.3;
+        symbol [ cx %tmp.195 96 24 26 ];
+        %tmp.196 = lgetv %bbW.17;
+        symbol [ bbW %tmp.196 96 29 32 ];
+        %tmp.197 = 2;
+        %tmp.198 = div %tmp.196 %tmp.197;
+        %tmp.199 = sub %tmp.195 %tmp.198;
+        lputv %drawX.25 %tmp.199;
+        symbol [ drawX %drawX.25 96 16 21 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 97 12 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_78_54_99_8_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_78_54_99_8_stop" ]
+        %drawY.26 = local;
+        symbol [ drawY %drawY.26 97 16 21 ];
+        %tmp.200 = lgetv %timeY.13;
+        symbol [ timeY %tmp.200 97 24 29 ];
+        %tmp.201 = lgetv %tH.16;
+        symbol [ tH %tmp.201 97 32 34 ];
+        %tmp.202 = 2;
+        %tmp.203 = div %tmp.201 %tmp.202;
+        %tmp.204 = add %tmp.200 %tmp.203;
+        %tmp.205 = lgetv %scaledH.24;
+        symbol [ scaledH %tmp.205 97 41 48 ];
+        %tmp.206 = 2;
+        %tmp.207 = div %tmp.205 %tmp.206;
+        %tmp.208 = sub %tmp.204 %tmp.207;
+        lputv %drawY.26 %tmp.208;
+        symbol [ drawY %drawY.26 97 16 21 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 98 12 ]
+        %tmp.209 = lgetv %dc;
+        symbol [ dc %tmp.209 98 12 14 ];
+        symbol [ drawBitmap2 %tmp.210 98 15 26 ];
+        %tmp.210 = getv function %tmp.209 :drawBitmap2;
+        %tmp.211 = lgetv %drawX.25;
+        symbol [ drawX %tmp.211 98 27 32 ];
+        %tmp.212 = lgetv %drawY.26;
+        symbol [ drawY %tmp.212 98 34 39 ];
+        %tmp.213 = lgetv %bb.20;
+        symbol [ bb %tmp.213 98 41 43 ];
+        %tmp.214 = newd 1;
+        %tmp.216 = const :transform;
+        symbol [ transform %tmp.216 98 47 56 const ];
+        %tmp.217 = lgetv %xform.23;
+        symbol [ xform %tmp.217 98 60 65 ];
+        %tmp.218 = dup %tmp.214;
+        %tmp.219 = aputv %tmp.218 %tmp.216 %tmp.217;
+        invoke %tmp.209 %tmp.210(%tmp.211, %tmp.212, %tmp.213, %tmp.219);
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_78_54_99_8_stop:
+        goto @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_78_8_107_8_if_end;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_78_8_107_8_if_else_false:
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_99_15_107_8_start:
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 101 12 ]
+        %tmp.220 = lgetv %dc;
+        symbol [ dc %tmp.220 101 12 14 ];
+        symbol [ setColor %tmp.221 101 15 23 ];
+        %tmp.221 = getv function %tmp.220 :setColor;
+        symbol [ Graphics %tmp.222 101 24 32 ];
+        %tmp.222 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.223 101 33 44 ];
+        %tmp.223 = getv %tmp.222 :COLOR_WHITE;
+        symbol [ Graphics %tmp.224 101 46 54 ];
+        %tmp.224 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.225 101 55 72 ];
+        %tmp.225 = getv %tmp.224 :COLOR_TRANSPARENT;
+        invoke %tmp.220 %tmp.221(%tmp.223, %tmp.225);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 102 12 ]
+        %tmp.226 = lgetv %dc;
+        symbol [ dc %tmp.226 102 12 14 ];
+        symbol [ drawText %tmp.227 102 15 23 ];
+        %tmp.227 = getv function %tmp.226 :drawText;
+        %tmp.228 = lgetv %cx.3;
+        symbol [ cx %tmp.228 102 24 26 ];
+        %tmp.229 = 2;
+        %tmp.230 = sub %tmp.228 %tmp.229;
+        %tmp.231 = lgetv %timeY.13;
+        symbol [ timeY %tmp.231 102 32 37 ];
+        %tmp.232 = lgetv %timeFont.12;
+        symbol [ timeFont %tmp.232 102 39 47 ];
+        %tmp.233 = lgetv %timeStr.11;
+        symbol [ timeStr %tmp.233 102 49 56 ];
+        symbol [ Graphics %tmp.234 102 58 66 ];
+        %tmp.234 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.235 102 67 86 ];
+        %tmp.235 = getv %tmp.234 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.226 %tmp.227(%tmp.230, %tmp.231, %tmp.232, %tmp.233, %tmp.235);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 103 12 ]
+        %tmp.236 = lgetv %dc;
+        symbol [ dc %tmp.236 103 12 14 ];
+        symbol [ drawText %tmp.237 103 15 23 ];
+        %tmp.237 = getv function %tmp.236 :drawText;
+        %tmp.238 = lgetv %cx.3;
+        symbol [ cx %tmp.238 103 24 26 ];
+        %tmp.239 = 2;
+        %tmp.240 = add %tmp.238 %tmp.239;
+        %tmp.241 = lgetv %timeY.13;
+        symbol [ timeY %tmp.241 103 32 37 ];
+        %tmp.242 = lgetv %timeFont.12;
+        symbol [ timeFont %tmp.242 103 39 47 ];
+        %tmp.243 = lgetv %timeStr.11;
+        symbol [ timeStr %tmp.243 103 49 56 ];
+        symbol [ Graphics %tmp.244 103 58 66 ];
+        %tmp.244 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.245 103 67 86 ];
+        %tmp.245 = getv %tmp.244 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.236 %tmp.237(%tmp.240, %tmp.241, %tmp.242, %tmp.243, %tmp.245);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 104 12 ]
+        %tmp.246 = lgetv %dc;
+        symbol [ dc %tmp.246 104 12 14 ];
+        symbol [ drawText %tmp.247 104 15 23 ];
+        %tmp.247 = getv function %tmp.246 :drawText;
+        %tmp.248 = lgetv %cx.3;
+        symbol [ cx %tmp.248 104 24 26 ];
+        %tmp.249 = 1;
+        %tmp.250 = sub %tmp.248 %tmp.249;
+        %tmp.251 = lgetv %timeY.13;
+        symbol [ timeY %tmp.251 104 32 37 ];
+        %tmp.252 = lgetv %timeFont.12;
+        symbol [ timeFont %tmp.252 104 39 47 ];
+        %tmp.253 = lgetv %timeStr.11;
+        symbol [ timeStr %tmp.253 104 49 56 ];
+        symbol [ Graphics %tmp.254 104 58 66 ];
+        %tmp.254 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.255 104 67 86 ];
+        %tmp.255 = getv %tmp.254 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.246 %tmp.247(%tmp.250, %tmp.251, %tmp.252, %tmp.253, %tmp.255);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 105 12 ]
+        %tmp.256 = lgetv %dc;
+        symbol [ dc %tmp.256 105 12 14 ];
+        symbol [ drawText %tmp.257 105 15 23 ];
+        %tmp.257 = getv function %tmp.256 :drawText;
+        %tmp.258 = lgetv %cx.3;
+        symbol [ cx %tmp.258 105 24 26 ];
+        %tmp.259 = 1;
+        %tmp.260 = add %tmp.258 %tmp.259;
+        %tmp.261 = lgetv %timeY.13;
+        symbol [ timeY %tmp.261 105 32 37 ];
+        %tmp.262 = lgetv %timeFont.12;
+        symbol [ timeFont %tmp.262 105 39 47 ];
+        %tmp.263 = lgetv %timeStr.11;
+        symbol [ timeStr %tmp.263 105 49 56 ];
+        symbol [ Graphics %tmp.264 105 58 66 ];
+        %tmp.264 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.265 105 67 86 ];
+        %tmp.265 = getv %tmp.264 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.256 %tmp.257(%tmp.260, %tmp.261, %tmp.262, %tmp.263, %tmp.265);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 106 12 ]
+        %tmp.266 = lgetv %dc;
+        symbol [ dc %tmp.266 106 12 14 ];
+        symbol [ drawText %tmp.267 106 15 23 ];
+        %tmp.267 = getv function %tmp.266 :drawText;
+        %tmp.268 = lgetv %cx.3;
+        symbol [ cx %tmp.268 106 24 26 ];
+        %tmp.269 = lgetv %timeY.13;
+        symbol [ timeY %tmp.269 106 32 37 ];
+        %tmp.270 = lgetv %timeFont.12;
+        symbol [ timeFont %tmp.270 106 39 47 ];
+        %tmp.271 = lgetv %timeStr.11;
+        symbol [ timeStr %tmp.271 106 49 56 ];
+        symbol [ Graphics %tmp.272 106 58 66 ];
+        %tmp.272 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.273 106 67 86 ];
+        %tmp.273 = getv %tmp.272 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.266 %tmp.267(%tmp.268, %tmp.269, %tmp.270, %tmp.271, %tmp.273);
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_99_15_107_8_stop:
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_78_8_107_8_if_end:
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 111 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %now.27 = local;
+        symbol [ now %now.27 111 12 15 ];
+        symbol [ Gregorian %tmp.274 111 18 27 ];
+        %tmp.274 = getm $.Toybox.Time.Gregorian;
+        symbol [ info %tmp.275 111 28 32 ];
+        %tmp.275 = getv function %tmp.274 :info;
+        symbol [ Time %tmp.276 111 33 37 ];
+        %tmp.276 = getm $.Toybox.Time;
+        symbol [ now %tmp.277 111 38 41 ];
+        %tmp.277 = getv function %tmp.276 :now;
+        %tmp.278 = invoke %tmp.276 %tmp.277();
+        symbol [ Time %tmp.279 111 45 49 ];
+        %tmp.279 = getm $.Toybox.Time;
+        symbol [ FORMAT_SHORT %tmp.280 111 50 62 ];
+        %tmp.280 = getv %tmp.279 :FORMAT_SHORT;
+        %tmp.281 = invoke %tmp.274 %tmp.275(%tmp.278, %tmp.280);
+        lputv %now.27 %tmp.281;
+        symbol [ now %now.27 111 12 15 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 112 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %dayNum.28 = local;
+        symbol [ dayNum %dayNum.28 112 12 18 ];
+        %tmp.282 = lgetv %now.27;
+        symbol [ now %tmp.282 112 21 24 ];
+        symbol [ day_of_week %tmp.283 112 25 36 ];
+        %tmp.283 = getv %tmp.282 :day_of_week;
+        %tmp.284 = as %tmp.283 Lang.Number;
+        symbol [ Lang %tmp.284 112 40 44 ];
+        symbol [ Number %tmp.284 112 45 51 ];
+        lputv %dayNum.28 %tmp.284;
+        symbol [ dayNum %dayNum.28 112 12 18 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 113 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %dayNames.29 = local;
+        symbol [ dayNames %dayNames.29 113 12 20 ];
+        %tmp.285 = newa 8;
+        %tmp.286 = "";
+        %tmp.287 = dup %tmp.285;
+        %tmp.288 = aputv %tmp.287 0 %tmp.286;
+        %tmp.289 = "SUN";
+        %tmp.290 = dup %tmp.288;
+        %tmp.291 = aputv %tmp.290 1 %tmp.289;
+        %tmp.292 = "MON";
+        %tmp.293 = dup %tmp.291;
+        %tmp.294 = aputv %tmp.293 2 %tmp.292;
+        %tmp.295 = "TUE";
+        %tmp.296 = dup %tmp.294;
+        %tmp.297 = aputv %tmp.296 3 %tmp.295;
+        %tmp.298 = "WED";
+        %tmp.299 = dup %tmp.297;
+        %tmp.300 = aputv %tmp.299 4 %tmp.298;
+        %tmp.301 = "THU";
+        %tmp.302 = dup %tmp.300;
+        %tmp.303 = aputv %tmp.302 5 %tmp.301;
+        %tmp.304 = "FRI";
+        %tmp.305 = dup %tmp.303;
+        %tmp.306 = aputv %tmp.305 6 %tmp.304;
+        %tmp.307 = "SAT";
+        %tmp.308 = dup %tmp.306;
+        %tmp.309 = aputv %tmp.308 7 %tmp.307;
+        lputv %dayNames.29 %tmp.309;
+        symbol [ dayNames %dayNames.29 113 12 20 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 114 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %dayStr.30 = local;
+        symbol [ dayStr %dayStr.30 114 12 18 ];
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_114_21_114_69_begin:
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_114_21_114_46_begin:
+        %tmp.310 = lgetv %dayNum.28;
+        symbol [ dayNum %tmp.310 114 21 27 ];
+        %tmp.311 = 1;
+        %tmp.312 = gte %tmp.310 %tmp.311;
+        bf %tmp.312 @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_114_21_114_69_else_false;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_114_36_114_46_true:
+        %tmp.313 = lgetv %dayNum.28;
+        symbol [ dayNum %tmp.313 114 36 42 ];
+        %tmp.314 = 7;
+        %tmp.315 = lte %tmp.313 %tmp.314;
+        push %tmp.315;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_114_36_114_46_end:
+        %tmp.316 = phi [%tmp.312 @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_114_21_114_46_begin] [%tmp.315 @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_114_36_114_46_true] [%tmp.316 @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_114_36_114_46_end];
+        bf %tmp.316 @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_114_21_114_69_else_false;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_114_21_114_69_true:
+        %tmp.317 = lgetv %dayNames.29;
+        symbol [ dayNames %tmp.317 114 50 58 ];
+        %tmp.318 = lgetv %dayNum.28;
+        symbol [ dayNum %tmp.318 114 59 65 ];
+        %tmp.319 = agetv %tmp.317 %tmp.318;
+        push %tmp.319;
+        goto @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_114_21_114_69_end;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_114_21_114_69_else_false:
+        %tmp.320 = "---";
+        push %tmp.320;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_114_21_114_69_end:
+        %tmp.321 = phi [%tmp.316 @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_114_21_114_69_begin] [%tmp.319 @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_114_21_114_69_true] [%tmp.320 @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_114_21_114_69_else_false] [%tmp.321 @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_114_21_114_69_end];
+        lputv %dayStr.30 %tmp.321;
+        symbol [ dayStr %dayStr.30 114 12 18 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 115 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %dateStr.31 = local;
+        symbol [ dateStr %dateStr.31 115 12 19 ];
+        %tmp.322 = lgetv %now.27;
+        symbol [ now %tmp.322 115 22 25 ];
+        symbol [ day %tmp.323 115 26 29 ];
+        %tmp.323 = getv %tmp.322 :day;
+        symbol [ toString %tmp.324 115 30 38 ];
+        %tmp.324 = getv function %tmp.323 :toString;
+        %tmp.325 = invoke %tmp.323 %tmp.324();
+        lputv %dateStr.31 %tmp.325;
+        symbol [ dateStr %dateStr.31 115 12 19 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 117 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %circX.32 = local;
+        symbol [ circX %circX.32 117 12 17 ];
+        %tmp.326 = 385;
+        lputv %circX.32 %tmp.326;
+        symbol [ circX %circX.32 117 12 17 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 118 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %circY.33 = local;
+        symbol [ circY %circY.33 118 12 17 ];
+        %tmp.327 = 170;
+        lputv %circY.33 %tmp.327;
+        symbol [ circY %circY.33 118 12 17 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 119 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %circR.34 = local;
+        symbol [ circR %circR.34 119 12 17 ];
+        %tmp.328 = 42;
+        lputv %circR.34 %tmp.328;
+        symbol [ circR %circR.34 119 12 17 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 121 8 ]
+        %tmp.329 = lgetv %dc;
+        symbol [ dc %tmp.329 121 8 10 ];
+        symbol [ setColor %tmp.330 121 11 19 ];
+        %tmp.330 = getv function %tmp.329 :setColor;
+        %tmp.331 = 0x222222;
+        symbol [ Graphics %tmp.332 121 30 38 ];
+        %tmp.332 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.333 121 39 56 ];
+        %tmp.333 = getv %tmp.332 :COLOR_TRANSPARENT;
+        invoke %tmp.329 %tmp.330(%tmp.331, %tmp.333);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 122 8 ]
+        %tmp.334 = lgetv %dc;
+        symbol [ dc %tmp.334 122 8 10 ];
+        symbol [ fillCircle %tmp.335 122 11 21 ];
+        %tmp.335 = getv function %tmp.334 :fillCircle;
+        %tmp.336 = lgetv %circX.32;
+        symbol [ circX %tmp.336 122 22 27 ];
+        %tmp.337 = lgetv %circY.33;
+        symbol [ circY %tmp.337 122 29 34 ];
+        %tmp.338 = lgetv %circR.34;
+        symbol [ circR %tmp.338 122 36 41 ];
+        invoke %tmp.334 %tmp.335(%tmp.336, %tmp.337, %tmp.338);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 124 8 ]
+        %tmp.339 = lgetv %dc;
+        symbol [ dc %tmp.339 124 8 10 ];
+        symbol [ setColor %tmp.340 124 11 19 ];
+        %tmp.340 = getv function %tmp.339 :setColor;
+        %tmp.341 = 0x0099FF;
+        symbol [ Graphics %tmp.342 124 30 38 ];
+        %tmp.342 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.343 124 39 56 ];
+        %tmp.343 = getv %tmp.342 :COLOR_TRANSPARENT;
+        invoke %tmp.339 %tmp.340(%tmp.341, %tmp.343);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 125 8 ]
+        %tmp.344 = lgetv %dc;
+        symbol [ dc %tmp.344 125 8 10 ];
+        symbol [ setPenWidth %tmp.345 125 11 22 ];
+        %tmp.345 = getv function %tmp.344 :setPenWidth;
+        %tmp.346 = 2;
+        invoke %tmp.344 %tmp.345(%tmp.346);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 126 8 ]
+        %tmp.347 = lgetv %dc;
+        symbol [ dc %tmp.347 126 8 10 ];
+        symbol [ drawCircle %tmp.348 126 11 21 ];
+        %tmp.348 = getv function %tmp.347 :drawCircle;
+        %tmp.349 = lgetv %circX.32;
+        symbol [ circX %tmp.349 126 22 27 ];
+        %tmp.350 = lgetv %circY.33;
+        symbol [ circY %tmp.350 126 29 34 ];
+        %tmp.351 = lgetv %circR.34;
+        symbol [ circR %tmp.351 126 36 41 ];
+        invoke %tmp.347 %tmp.348(%tmp.349, %tmp.350, %tmp.351);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 128 8 ]
+        %tmp.352 = lgetv %dc;
+        symbol [ dc %tmp.352 128 8 10 ];
+        symbol [ setColor %tmp.353 128 11 19 ];
+        %tmp.353 = getv function %tmp.352 :setColor;
+        %tmp.354 = 0x0099FF;
+        symbol [ Graphics %tmp.355 128 30 38 ];
+        %tmp.355 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.356 128 39 56 ];
+        %tmp.356 = getv %tmp.355 :COLOR_TRANSPARENT;
+        invoke %tmp.352 %tmp.353(%tmp.354, %tmp.356);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 129 8 ]
+        %tmp.357 = lgetv %dc;
+        symbol [ dc %tmp.357 129 8 10 ];
+        symbol [ drawText %tmp.358 129 11 19 ];
+        %tmp.358 = getv function %tmp.357 :drawText;
+        %tmp.359 = lgetv %circX.32;
+        symbol [ circX %tmp.359 129 20 25 ];
+        %tmp.360 = lgetv %circY.33;
+        symbol [ circY %tmp.360 129 27 32 ];
+        %tmp.361 = 20;
+        %tmp.362 = sub %tmp.360 %tmp.361;
+        symbol [ Graphics %tmp.363 129 39 47 ];
+        %tmp.363 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.364 129 48 57 ];
+        %tmp.364 = getv %tmp.363 :FONT_TINY;
+        %tmp.365 = lgetv %dayStr.30;
+        symbol [ dayStr %tmp.365 129 59 65 ];
+        symbol [ Graphics %tmp.366 129 67 75 ];
+        %tmp.366 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.367 129 76 95 ];
+        %tmp.367 = getv %tmp.366 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.357 %tmp.358(%tmp.359, %tmp.362, %tmp.364, %tmp.365, %tmp.367);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 131 8 ]
+        %tmp.368 = lgetv %dc;
+        symbol [ dc %tmp.368 131 8 10 ];
+        symbol [ setColor %tmp.369 131 11 19 ];
+        %tmp.369 = getv function %tmp.368 :setColor;
+        symbol [ Graphics %tmp.370 131 20 28 ];
+        %tmp.370 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.371 131 29 40 ];
+        %tmp.371 = getv %tmp.370 :COLOR_WHITE;
+        symbol [ Graphics %tmp.372 131 42 50 ];
+        %tmp.372 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.373 131 51 68 ];
+        %tmp.373 = getv %tmp.372 :COLOR_TRANSPARENT;
+        invoke %tmp.368 %tmp.369(%tmp.371, %tmp.373);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 132 8 ]
+        %tmp.374 = lgetv %dc;
+        symbol [ dc %tmp.374 132 8 10 ];
+        symbol [ drawText %tmp.375 132 11 19 ];
+        %tmp.375 = getv function %tmp.374 :drawText;
+        %tmp.376 = lgetv %circX.32;
+        symbol [ circX %tmp.376 132 20 25 ];
+        %tmp.377 = lgetv %circY.33;
+        symbol [ circY %tmp.377 132 27 32 ];
+        %tmp.378 = 2;
+        %tmp.379 = sub %tmp.377 %tmp.378;
+        symbol [ Graphics %tmp.380 132 38 46 ];
+        %tmp.380 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.381 132 47 57 ];
+        %tmp.381 = getv %tmp.380 :FONT_SMALL;
+        %tmp.382 = lgetv %dateStr.31;
+        symbol [ dateStr %tmp.382 132 59 66 ];
+        symbol [ Graphics %tmp.383 132 68 76 ];
+        %tmp.383 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.384 132 77 96 ];
+        %tmp.384 = getv %tmp.383 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.374 %tmp.375(%tmp.376, %tmp.379, %tmp.381, %tmp.382, %tmp.384);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 135 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %sysStats.35 = local;
+        symbol [ sysStats %sysStats.35 135 12 20 ];
+        symbol [ System %tmp.385 135 23 29 ];
+        %tmp.385 = getm $.Toybox.System;
+        symbol [ getSystemStats %tmp.386 135 30 44 ];
+        %tmp.386 = getv function %tmp.385 :getSystemStats;
+        %tmp.387 = invoke %tmp.385 %tmp.386();
+        lputv %sysStats.35 %tmp.387;
+        symbol [ sysStats %sysStats.35 135 12 20 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 136 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %batt.36 = local;
+        symbol [ batt %batt.36 136 12 16 ];
+        %tmp.388 = lgetv %sysStats.35;
+        symbol [ sysStats %tmp.388 136 19 27 ];
+        symbol [ battery %tmp.389 136 28 35 ];
+        %tmp.389 = getv %tmp.388 :battery;
+        symbol [ toNumber %tmp.390 136 36 44 ];
+        %tmp.390 = getv function %tmp.389 :toNumber;
+        %tmp.391 = invoke %tmp.389 %tmp.390();
+        lputv %batt.36 %tmp.391;
+        symbol [ batt %batt.36 136 12 16 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 138 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %battColor.37 = local;
+        symbol [ battColor %battColor.37 138 12 21 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 139 8 ]
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_139_8_145_8_if_stmt:
+        %tmp.392 = lgetv %batt.36;
+        symbol [ batt %tmp.392 139 12 16 ];
+        %tmp.393 = 20;
+        %tmp.394 = lte %tmp.392 %tmp.393;
+        bf %tmp.394 @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_139_8_145_8_if_false;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_139_8_145_8_if_true:
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_139_24_141_8_start:
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 140 12 ]
+        symbol [ Graphics %tmp.395 140 24 32 ];
+        %tmp.395 = getm $.Toybox.Graphics;
+        symbol [ COLOR_RED %tmp.396 140 33 42 ];
+        %tmp.396 = getv %tmp.395 :COLOR_RED;
+        lputv %battColor.37 %tmp.396;
+        symbol [ battColor %battColor.37 140 12 21 ];
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_139_24_141_8_stop:
+        goto @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_139_8_145_8_if_end;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_139_8_145_8_if_false:
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 141 15 ]
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_141_15_145_8_if_stmt:
+        %tmp.397 = lgetv %batt.36;
+        symbol [ batt %tmp.397 141 19 23 ];
+        %tmp.398 = 50;
+        %tmp.399 = lte %tmp.397 %tmp.398;
+        bf %tmp.399 @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_141_15_145_8_if_else_false;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_141_15_145_8_if_true:
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_141_31_143_8_start:
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 142 12 ]
+        symbol [ Graphics %tmp.400 142 24 32 ];
+        %tmp.400 = getm $.Toybox.Graphics;
+        symbol [ COLOR_YELLOW %tmp.401 142 33 45 ];
+        %tmp.401 = getv %tmp.400 :COLOR_YELLOW;
+        lputv %battColor.37 %tmp.401;
+        symbol [ battColor %battColor.37 142 12 21 ];
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_141_31_143_8_stop:
+        goto @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_141_15_145_8_if_end;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_141_15_145_8_if_else_false:
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_143_15_145_8_start:
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 144 12 ]
+        %tmp.402 = 0x00CC44;
+        lputv %battColor.37 %tmp.402;
+        symbol [ battColor %battColor.37 144 12 21 ];
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_143_15_145_8_stop:
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_141_15_145_8_if_end:
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_139_8_145_8_if_end:
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 147 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %bx.38 = local;
+        symbol [ bx %bx.38 147 12 14 ];
+        %tmp.403 = lgetv %cx.3;
+        symbol [ cx %tmp.403 147 17 19 ];
+        %tmp.404 = 30;
+        %tmp.405 = sub %tmp.403 %tmp.404;
+        lputv %bx.38 %tmp.405;
+        symbol [ bx %bx.38 147 12 14 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 148 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %by.39 = local;
+        symbol [ by %by.39 148 12 14 ];
+        %tmp.406 = 392;
+        lputv %by.39 %tmp.406;
+        symbol [ by %by.39 148 12 14 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 149 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %bw.40 = local;
+        symbol [ bw %bw.40 149 12 14 ];
+        %tmp.407 = 44;
+        lputv %bw.40 %tmp.407;
+        symbol [ bw %bw.40 149 12 14 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 150 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %bh.41 = local;
+        symbol [ bh %bh.41 150 12 14 ];
+        %tmp.408 = 18;
+        lputv %bh.41 %tmp.408;
+        symbol [ bh %bh.41 150 12 14 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 151 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %nubW.42 = local;
+        symbol [ nubW %nubW.42 151 12 16 ];
+        %tmp.409 = 4;
+        lputv %nubW.42 %tmp.409;
+        symbol [ nubW %nubW.42 151 12 16 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 152 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %nubH.43 = local;
+        symbol [ nubH %nubH.43 152 12 16 ];
+        %tmp.410 = 8;
+        lputv %nubH.43 %tmp.410;
+        symbol [ nubH %nubH.43 152 12 16 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 155 8 ]
+        [ "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_start" "C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop" ]
+        %fillW.44 = local;
+        symbol [ fillW %fillW.44 155 12 17 ];
+        %tmp.411 = lgetv %bw.40;
+        symbol [ bw %tmp.411 155 20 22 ];
+        %tmp.412 = lgetv %batt.36;
+        symbol [ batt %tmp.412 155 25 29 ];
+        %tmp.413 = mul %tmp.411 %tmp.412;
+        %tmp.414 = 100;
+        %tmp.415 = div %tmp.413 %tmp.414;
+        lputv %fillW.44 %tmp.415;
+        symbol [ fillW %fillW.44 155 12 17 ];
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 156 8 ]
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_156_8_156_36_if_stmt:
+        %tmp.416 = lgetv %fillW.44;
+        symbol [ fillW %tmp.416 156 12 17 ];
+        %tmp.417 = 1;
+        %tmp.418 = lt %tmp.416 %tmp.417;
+        bf %tmp.418 @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_156_8_156_36_if_end;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_156_8_156_36_if_true:
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_156_23_156_36_start:
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 156 25 ]
+        %tmp.419 = 1;
+        lputv %fillW.44 %tmp.419;
+        symbol [ fillW %fillW.44 156 25 30 ];
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_156_23_156_36_stop:
+        goto @C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_156_8_156_36_if_end;
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_156_8_156_36_if_end:
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 158 8 ]
+        %tmp.420 = lgetv %dc;
+        symbol [ dc %tmp.420 158 8 10 ];
+        symbol [ setColor %tmp.421 158 11 19 ];
+        %tmp.421 = getv function %tmp.420 :setColor;
+        %tmp.422 = lgetv %battColor.37;
+        symbol [ battColor %tmp.422 158 20 29 ];
+        symbol [ Graphics %tmp.423 158 31 39 ];
+        %tmp.423 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.424 158 40 57 ];
+        %tmp.424 = getv %tmp.423 :COLOR_TRANSPARENT;
+        invoke %tmp.420 %tmp.421(%tmp.422, %tmp.424);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 159 8 ]
+        %tmp.425 = lgetv %dc;
+        symbol [ dc %tmp.425 159 8 10 ];
+        symbol [ fillRectangle %tmp.426 159 11 24 ];
+        %tmp.426 = getv function %tmp.425 :fillRectangle;
+        %tmp.427 = lgetv %bx.38;
+        symbol [ bx %tmp.427 159 25 27 ];
+        %tmp.428 = 1;
+        %tmp.429 = add %tmp.427 %tmp.428;
+        %tmp.430 = lgetv %by.39;
+        symbol [ by %tmp.430 159 33 35 ];
+        %tmp.431 = 1;
+        %tmp.432 = add %tmp.430 %tmp.431;
+        %tmp.433 = lgetv %fillW.44;
+        symbol [ fillW %tmp.433 159 41 46 ];
+        %tmp.434 = 1;
+        %tmp.435 = sub %tmp.433 %tmp.434;
+        %tmp.436 = lgetv %bh.41;
+        symbol [ bh %tmp.436 159 52 54 ];
+        %tmp.437 = 2;
+        %tmp.438 = sub %tmp.436 %tmp.437;
+        invoke %tmp.425 %tmp.426(%tmp.429, %tmp.432, %tmp.435, %tmp.438);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 161 8 ]
+        %tmp.439 = lgetv %dc;
+        symbol [ dc %tmp.439 161 8 10 ];
+        symbol [ setPenWidth %tmp.440 161 11 22 ];
+        %tmp.440 = getv function %tmp.439 :setPenWidth;
+        %tmp.441 = 1;
+        invoke %tmp.439 %tmp.440(%tmp.441);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 162 8 ]
+        %tmp.442 = lgetv %dc;
+        symbol [ dc %tmp.442 162 8 10 ];
+        symbol [ setColor %tmp.443 162 11 19 ];
+        %tmp.443 = getv function %tmp.442 :setColor;
+        %tmp.444 = 0x888888;
+        symbol [ Graphics %tmp.445 162 30 38 ];
+        %tmp.445 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.446 162 39 56 ];
+        %tmp.446 = getv %tmp.445 :COLOR_TRANSPARENT;
+        invoke %tmp.442 %tmp.443(%tmp.444, %tmp.446);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 163 8 ]
+        %tmp.447 = lgetv %dc;
+        symbol [ dc %tmp.447 163 8 10 ];
+        symbol [ drawRectangle %tmp.448 163 11 24 ];
+        %tmp.448 = getv function %tmp.447 :drawRectangle;
+        %tmp.449 = lgetv %bx.38;
+        symbol [ bx %tmp.449 163 25 27 ];
+        %tmp.450 = lgetv %by.39;
+        symbol [ by %tmp.450 163 29 31 ];
+        %tmp.451 = lgetv %bw.40;
+        symbol [ bw %tmp.451 163 33 35 ];
+        %tmp.452 = lgetv %bh.41;
+        symbol [ bh %tmp.452 163 37 39 ];
+        invoke %tmp.447 %tmp.448(%tmp.449, %tmp.450, %tmp.451, %tmp.452);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 165 8 ]
+        %tmp.453 = lgetv %dc;
+        symbol [ dc %tmp.453 165 8 10 ];
+        symbol [ fillRectangle %tmp.454 165 11 24 ];
+        %tmp.454 = getv function %tmp.453 :fillRectangle;
+        %tmp.455 = lgetv %bx.38;
+        symbol [ bx %tmp.455 165 25 27 ];
+        %tmp.456 = lgetv %bw.40;
+        symbol [ bw %tmp.456 165 30 32 ];
+        %tmp.457 = add %tmp.455 %tmp.456;
+        %tmp.458 = lgetv %by.39;
+        symbol [ by %tmp.458 165 34 36 ];
+        %tmp.459 = lgetv %bh.41;
+        symbol [ bh %tmp.459 165 40 42 ];
+        %tmp.460 = lgetv %nubH.43;
+        symbol [ nubH %tmp.460 165 45 49 ];
+        %tmp.461 = sub %tmp.459 %tmp.460;
+        %tmp.462 = 2;
+        %tmp.463 = div %tmp.461 %tmp.462;
+        %tmp.464 = add %tmp.458 %tmp.463;
+        %tmp.465 = lgetv %nubW.42;
+        symbol [ nubW %tmp.465 165 56 60 ];
+        %tmp.466 = lgetv %nubH.43;
+        symbol [ nubH %tmp.466 165 62 66 ];
+        invoke %tmp.453 %tmp.454(%tmp.457, %tmp.464, %tmp.465, %tmp.466);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 167 8 ]
+        %tmp.467 = lgetv %dc;
+        symbol [ dc %tmp.467 167 8 10 ];
+        symbol [ setColor %tmp.468 167 11 19 ];
+        %tmp.468 = getv function %tmp.467 :setColor;
+        %tmp.469 = lgetv %battColor.37;
+        symbol [ battColor %tmp.469 167 20 29 ];
+        symbol [ Graphics %tmp.470 167 31 39 ];
+        %tmp.470 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.471 167 40 57 ];
+        %tmp.471 = getv %tmp.470 :COLOR_TRANSPARENT;
+        invoke %tmp.467 %tmp.468(%tmp.469, %tmp.471);
+[ "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc" 168 8 ]
+        %tmp.472 = lgetv %dc;
+        symbol [ dc %tmp.472 168 8 10 ];
+        symbol [ drawText %tmp.473 168 11 19 ];
+        %tmp.473 = getv function %tmp.472 :drawText;
+        %tmp.474 = lgetv %bx.38;
+        symbol [ bx %tmp.474 168 20 22 ];
+        %tmp.475 = lgetv %bw.40;
+        symbol [ bw %tmp.475 168 25 27 ];
+        %tmp.476 = add %tmp.474 %tmp.475;
+        %tmp.477 = lgetv %nubW.42;
+        symbol [ nubW %tmp.477 168 30 34 ];
+        %tmp.478 = add %tmp.476 %tmp.477;
+        %tmp.479 = 6;
+        %tmp.480 = add %tmp.478 %tmp.479;
+        %tmp.481 = lgetv %by.39;
+        symbol [ by %tmp.481 168 40 42 ];
+        %tmp.482 = 1;
+        %tmp.483 = sub %tmp.481 %tmp.482;
+        symbol [ Graphics %tmp.484 168 48 56 ];
+        %tmp.484 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.485 168 57 66 ];
+        %tmp.485 = getv %tmp.484 :FONT_TINY;
+        %tmp.486 = lgetv %batt.36;
+        symbol [ batt %tmp.486 168 68 72 ];
+        symbol [ toString %tmp.487 168 73 81 ];
+        %tmp.487 = getv function %tmp.486 :toString;
+        %tmp.488 = invoke %tmp.486 %tmp.487();
+        %tmp.489 = "%";
+        %tmp.490 = add %tmp.488 %tmp.489;
+        symbol [ Graphics %tmp.491 168 91 99 ];
+        %tmp.491 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_LEFT %tmp.492 168 100 117 ];
+        %tmp.492 = getv %tmp.491 :TEXT_JUSTIFY_LEFT;
+        invoke %tmp.472 %tmp.473(%tmp.480, %tmp.483, %tmp.485, %tmp.490, %tmp.492);
+C__Users_rjayt_Workspaces_garmin_watchface_source_WatchFaceView_mc_39_49_169_4_stop:
+    }
+}
+[ @file = "C:\Users\rjayt\Workspaces\garmin-watchface\source\WatchFaceView.mc"; @line = 1; ]
+<init> {
+}
