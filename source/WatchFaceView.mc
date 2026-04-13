@@ -9,10 +9,18 @@ import Toybox.Time.Gregorian;
 class WatchFaceView extends WatchUi.WatchFace {
 
     // ── Tuning knobs ─────────────────────────────────────────────────────
-    // Stretch the time digits vertically and/or horizontally.
-    // 1.0 = no change, 1.20 = 20% larger, 0.90 = 10% smaller, etc.
-    const TIME_SCALE_Y = 2.00f;   // height scale  <-- tweak me
-    const TIME_SCALE_X = 1.20f;   // width  scale  <-- tweak me
+    // Time digit scaling
+    const TIME_SCALE_Y  = 2.00f;    // height scale  <-- tweak me
+    const TIME_SCALE_X  = 1.20f;    // width  scale  <-- tweak me
+
+    // Time digit colors (0xRRGGBB)
+    const TIME_COLOR_HH  = 0xFFFFFF; // hours color   <-- tweak me
+    const TIME_COLOR_SEP = 0x888888; // colon color   <-- tweak me
+    const TIME_COLOR_MM  = 0xFFFFFF; // minutes color <-- tweak me
+
+    // Date circle position
+    const CIRC_X = 385;             // center X      <-- tweak me
+    const CIRC_Y = 120;             // center Y      <-- tweak me
     // ─────────────────────────────────────────────────────────────────────
 
     function initialize() {
@@ -43,6 +51,16 @@ class WatchFaceView extends WatchUi.WatchFace {
         return result;
     }
 
+    // Draw bold text (x is left edge, LEFT_JUSTIFY)
+    function drawBold(bdc as Graphics.Dc, x as Lang.Number, y as Lang.Number,
+                      font as Graphics.FontType, str as Lang.String) as Void {
+        bdc.drawText(x - 2, y, font, str, Graphics.TEXT_JUSTIFY_LEFT);
+        bdc.drawText(x + 2, y, font, str, Graphics.TEXT_JUSTIFY_LEFT);
+        bdc.drawText(x - 1, y, font, str, Graphics.TEXT_JUSTIFY_LEFT);
+        bdc.drawText(x + 1, y, font, str, Graphics.TEXT_JUSTIFY_LEFT);
+        bdc.drawText(x,     y, font, str, Graphics.TEXT_JUSTIFY_LEFT);
+    }
+
     function onUpdate(dc as Graphics.Dc) as Void {
         var W = dc.getWidth();    // 454
         var H = dc.getHeight();   // 454
@@ -52,7 +70,71 @@ class WatchFaceView extends WatchUi.WatchFace {
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
 
-        // ── STEPS (top) ──────────────────────────────────────────────────
+        // ── TIME (center, maximum size) ──────────────────────────────────
+        var clockTime = System.getClockTime();
+        var hour = clockTime.hour;
+        var min  = clockTime.min;
+        var hhStr  = hour.format("%02d");
+        var sepStr = ":";
+        var mmStr  = min.format("%02d");
+        var timeStr = hhStr + sepStr + mmStr;
+
+        var timeFont = Graphics.FONT_NUMBER_THAI_HOT;
+        var timeY = 155;
+
+        // Measure the parts so we can color HH and MM independently
+        var fullDims = dc.getTextDimensions(timeStr, timeFont);
+        var hhDims   = dc.getTextDimensions(hhStr,   timeFont);
+        var sepDims  = dc.getTextDimensions(sepStr,  timeFont);
+        var tW = fullDims[0] as Lang.Number;
+        var tH = fullDims[1] as Lang.Number;
+        var hhW  = hhDims[0]  as Lang.Number;
+        var sepW = sepDims[0] as Lang.Number;
+
+        var bbW = tW + 10;
+        // Left edge of the text block inside the bitmap (centered in bitmap)
+        var startX = (bbW - tW) / 2;
+        var hhX  = startX;
+        var sepX = startX + hhW;
+        var mmX  = startX + hhW + sepW;
+
+        var bbRef = Graphics.createBufferedBitmap({:width => bbW, :height => tH});
+        var bbRaw = bbRef.get();
+        if (bbRaw instanceof Graphics.BufferedBitmap) {
+            var bb = bbRaw as Graphics.BufferedBitmap;
+            var bdc = bb.getDc();
+            bdc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
+            bdc.clear();
+
+            // Hours
+            bdc.setColor(TIME_COLOR_HH, Graphics.COLOR_TRANSPARENT);
+            drawBold(bdc, hhX, 0, timeFont, hhStr);
+
+            // Separator
+            bdc.setColor(TIME_COLOR_SEP, Graphics.COLOR_TRANSPARENT);
+            bdc.drawText(sepX, 0, timeFont, sepStr, Graphics.TEXT_JUSTIFY_LEFT);
+
+            // Minutes
+            bdc.setColor(TIME_COLOR_MM, Graphics.COLOR_TRANSPARENT);
+            drawBold(bdc, mmX, 0, timeFont, mmStr);
+
+            // Scale and blit
+            var xform = new Graphics.AffineTransform();
+            xform.scale(TIME_SCALE_X, TIME_SCALE_Y);
+            var scaledW = (bbW * TIME_SCALE_X).toNumber();
+            var scaledH = (tH  * TIME_SCALE_Y).toNumber();
+            var drawX = cx - scaledW / 2;
+            var drawY = timeY + tH / 2 - scaledH / 2;
+            dc.drawBitmap2(drawX, drawY, bb, {:transform => xform});
+        } else {
+            // Fallback: no scaling, white only
+            dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+            dc.drawText(cx - 2, timeY, timeFont, timeStr, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(cx + 2, timeY, timeFont, timeStr, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(cx,     timeY, timeFont, timeStr, Graphics.TEXT_JUSTIFY_CENTER);
+        }
+
+        // ── STEPS (top — drawn after time so it stays on top) ────────────
         var steps = 0;
         var actInfo = ActivityMonitor.getInfo();
         if (actInfo != null) {
@@ -62,82 +144,33 @@ class WatchFaceView extends WatchUi.WatchFace {
             }
         }
         var stepsStr = formatWithCommas(steps) + " steps";
-
         dc.setColor(0xAAAAAA, Graphics.COLOR_TRANSPARENT);
         dc.drawText(cx, 28, Graphics.FONT_SMALL, stepsStr, Graphics.TEXT_JUSTIFY_CENTER);
 
-        // ── TIME (center, maximum size) ──────────────────────────────────
-        var clockTime = System.getClockTime();
-        var hour = clockTime.hour;
-        var min  = clockTime.min;
-        var timeStr = hour.format("%02d") + ":" + min.format("%02d");
-
-        // ── TIME: bold + 15% taller via BufferedBitmap + AffineTransform ──
-        var timeFont = Graphics.FONT_NUMBER_THAI_HOT;
-        var timeY = 155;
-        var dims = dc.getTextDimensions(timeStr, timeFont);
-        var tW = dims[0] as Lang.Number;
-        var tH = dims[1] as Lang.Number;
-        var bbW = tW + 10;
-
-        var bbRef = Graphics.createBufferedBitmap({:width => bbW, :height => tH});
-        var bbRaw = bbRef.get();
-        if (bbRaw instanceof Graphics.BufferedBitmap) {
-            var bb = bbRaw as Graphics.BufferedBitmap;
-            // Draw bold text onto off-screen bitmap
-            var bdc = bb.getDc();
-            bdc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
-            bdc.clear();
-            bdc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-            var bx = bbW / 2;
-            bdc.drawText(bx - 2, 0, timeFont, timeStr, Graphics.TEXT_JUSTIFY_CENTER);
-            bdc.drawText(bx + 2, 0, timeFont, timeStr, Graphics.TEXT_JUSTIFY_CENTER);
-            bdc.drawText(bx - 1, 0, timeFont, timeStr, Graphics.TEXT_JUSTIFY_CENTER);
-            bdc.drawText(bx + 1, 0, timeFont, timeStr, Graphics.TEXT_JUSTIFY_CENTER);
-            bdc.drawText(bx,     0, timeFont, timeStr, Graphics.TEXT_JUSTIFY_CENTER);
-
-            // Apply TIME_SCALE_X / TIME_SCALE_Y, keeping the visual center fixed
-            var xform = new Graphics.AffineTransform();
-            xform.scale(TIME_SCALE_X, TIME_SCALE_Y);
-            var scaledW = (bbW  * TIME_SCALE_X).toNumber();
-            var scaledH = (tH   * TIME_SCALE_Y).toNumber();
-            var drawX = cx - scaledW / 2;
-            var drawY = timeY + tH / 2 - scaledH / 2;
-            dc.drawBitmap2(drawX, drawY, bb, {:transform => xform});
-        } else {
-            // Fallback: bold only, no vertical stretch
-            dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(cx - 2, timeY, timeFont, timeStr, Graphics.TEXT_JUSTIFY_CENTER);
-            dc.drawText(cx + 2, timeY, timeFont, timeStr, Graphics.TEXT_JUSTIFY_CENTER);
-            dc.drawText(cx - 1, timeY, timeFont, timeStr, Graphics.TEXT_JUSTIFY_CENTER);
-            dc.drawText(cx + 1, timeY, timeFont, timeStr, Graphics.TEXT_JUSTIFY_CENTER);
-            dc.drawText(cx,     timeY, timeFont, timeStr, Graphics.TEXT_JUSTIFY_CENTER);
-        }
-
-        // ── DAY / DATE circle (right) ────────────────────────────────────
-        // Use FORMAT_SHORT to get numeric day_of_week (1=Sun ... 7=Sat)
+        // ── DAY / DATE circle ────────────────────────────────────────────
+        // 2-letter abbreviations: SU MO TU WE TH FR SA
         var now = Gregorian.info(Time.now(), Time.FORMAT_SHORT);
         var dayNum = now.day_of_week as Lang.Number;
-        var dayNames = ["", "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-        var dayStr = dayNum >= 1 && dayNum <= 7 ? dayNames[dayNum] : "---";
+        var dayNames = ["", "SU", "MO", "TU", "WE", "TH", "FR", "SA"];
+        var dayStr = dayNum >= 1 && dayNum <= 7 ? dayNames[dayNum] : "--";
         var dateStr = now.day.toString();
 
-        var circX = 385;
-        var circY = 170;
         var circR = 42;
 
         dc.setColor(0x222222, Graphics.COLOR_TRANSPARENT);
-        dc.fillCircle(circX, circY, circR);
+        dc.fillCircle(CIRC_X, CIRC_Y, circR);
 
         dc.setColor(0x0099FF, Graphics.COLOR_TRANSPARENT);
         dc.setPenWidth(2);
-        dc.drawCircle(circX, circY, circR);
+        dc.drawCircle(CIRC_X, CIRC_Y, circR);
 
+        // Day label: small, near the top of the circle
         dc.setColor(0x0099FF, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(circX, circY - 20, Graphics.FONT_TINY, dayStr, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(CIRC_X, CIRC_Y - 30, Graphics.FONT_XTINY, dayStr, Graphics.TEXT_JUSTIFY_CENTER);
 
+        // Date number: centered in the lower half of the circle
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(circX, circY - 2, Graphics.FONT_SMALL, dateStr, Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(CIRC_X, CIRC_Y - 8, Graphics.FONT_SMALL, dateStr, Graphics.TEXT_JUSTIFY_CENTER);
 
         // ── BATTERY (bottom) ─────────────────────────────────────────────
         var sysStats = System.getSystemStats();
@@ -159,7 +192,6 @@ class WatchFaceView extends WatchUi.WatchFace {
         var nubW = 4;
         var nubH = 8;
 
-        // Fill proportional to charge (guard against width < 1)
         var fillW = bw * batt / 100;
         if (fillW < 1) { fillW = 1; }
 
@@ -169,7 +201,6 @@ class WatchFaceView extends WatchUi.WatchFace {
         dc.setPenWidth(1);
         dc.setColor(0x888888, Graphics.COLOR_TRANSPARENT);
         dc.drawRectangle(bx, by, bw, bh);
-
         dc.fillRectangle(bx + bw, by + (bh - nubH) / 2, nubW, nubH);
 
         dc.setColor(battColor, Graphics.COLOR_TRANSPARENT);
