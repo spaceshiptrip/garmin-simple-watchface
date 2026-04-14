@@ -12,7 +12,7 @@ class WatchFaceView extends WatchUi.WatchFace {
     // ── Tuning knobs ─────────────────────────────────────────────────────
     // Time digit scaling (awake mode)
     const TIME_SCALE_Y  = 2.00f;    // height scale  <-- tweak me
-    const TIME_SCALE_X  = 1.20f;    // width  scale  <-- tweak me
+    const TIME_SCALE_X  = 1.50f;    // width  scale  <-- tweak me
 
     // Background color
     // const BG_COLOR = 0x000000;       // background    <-- tweak me
