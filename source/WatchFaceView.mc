@@ -14,24 +14,20 @@ class WatchFaceView extends WatchUi.WatchFace {
     const TIME_SCALE_Y  = 2.00f;    // height scale  <-- tweak me
     const TIME_SCALE_X  = 1.50f;    // width  scale  <-- tweak me
 
-    // Background color
-    // const BG_COLOR = 0x000000;       // background    <-- tweak me
-    const BG_COLOR = Graphics.COLOR_WHITE;       // background    <-- tweak me
+    // Background color (awake mode)
+    const BG_COLOR = Graphics.COLOR_WHITE; // background    <-- tweak me
 
     // Time digit colors (awake mode, 0xRRGGBB)
-    // const TIME_COLOR_HH  = 0xFFFFFF; // hours color   <-- tweak me
-    //const TIME_COLOR_MM  = 0xFFFFFF; // minutes color <-- tweak me
-    const TIME_COLOR_SEP = 0x888888; // colon color   <-- tweak me
-    
-
-    const TIME_COLOR_HH  = Graphics.COLOR_BLUE; // hours color   <-- tweak me
-    const TIME_COLOR_MM  = Graphics.COLOR_BLACK; // minutes color <-- tweak me
+    const TIME_COLOR_HH  = Graphics.COLOR_BLUE;  // hours color   <-- tweak me
+    const TIME_COLOR_SEP = 0x888888;              // colon color   <-- tweak me
+    const TIME_COLOR_MM  = Graphics.COLOR_BLACK;  // minutes color <-- tweak me
 
     // Date circle position (awake mode)
     const CIRC_X = 385;             // center X      <-- tweak me
     const CIRC_Y = 120;             // center Y      <-- tweak me
 
     // AOD (always-on display) settings
+    const AOD_BG_COLOR  = Graphics.COLOR_BLACK; // background    <-- tweak me
     const AOD_SCALE_X   = 0.70f;    // time width scale in AOD   <-- tweak me
     const AOD_SCALE_Y   = 1.10f;    // time height scale in AOD  <-- tweak me
     const AOD_COLOR_HH  = 0x666666; // hours color in AOD        <-- tweak me
@@ -104,7 +100,7 @@ class WatchFaceView extends WatchUi.WatchFace {
                       cx as Lang.Number, cy as Lang.Number,
                       scaleX as Lang.Float, scaleY as Lang.Float,
                       colorHH as Lang.Number, colorSep as Lang.Number,
-                      colorMM as Lang.Number,
+                      colorMM as Lang.Number, bgColor as Lang.Number,
                       bold as Lang.Boolean) as Void {
         var clockTime = System.getClockTime();
         var hhStr  = clockTime.hour.format("%02d");
@@ -139,7 +135,7 @@ class WatchFaceView extends WatchUi.WatchFace {
 
         var bb  = bbRaw as Graphics.BufferedBitmap;
         var bdc = bb.getDc();
-        bdc.setColor(BG_COLOR, BG_COLOR);
+        bdc.setColor(bgColor, bgColor);
         bdc.clear();
 
         bdc.setColor(colorHH, Graphics.COLOR_TRANSPARENT);
@@ -172,13 +168,11 @@ class WatchFaceView extends WatchUi.WatchFace {
         var cx = W / 2;
         var cy = H / 2;
 
-        dc.setColor(BG_COLOR, BG_COLOR);
-        dc.clear();
-
         if (isAsleep) {
             // ── AOD mode: time only, dimmer, drifted to prevent burn-in ──
-            // Drift the center position in a slow circle keyed to the minute.
-            // One full revolution per hour; radius = AOD_DRIFT_R pixels.
+            dc.setColor(AOD_BG_COLOR, AOD_BG_COLOR);
+            dc.clear();
+
             var minute = System.getClockTime().min.toFloat();
             var angle  = minute * Math.PI / 30.0f;   // 0..2π over 60 min
             var driftX = (AOD_DRIFT_R.toFloat() * Math.sin(angle)).toNumber();
@@ -187,16 +181,18 @@ class WatchFaceView extends WatchUi.WatchFace {
             drawTime(dc,
                      cx + driftX, cy + driftY,
                      AOD_SCALE_X, AOD_SCALE_Y,
-                     AOD_COLOR_HH, AOD_COLOR_SEP, AOD_COLOR_MM,
+                     AOD_COLOR_HH, AOD_COLOR_SEP, AOD_COLOR_MM, AOD_BG_COLOR,
                      false);
         } else {
             // ── Awake mode: full watch face ──────────────────────────────
+            dc.setColor(BG_COLOR, BG_COLOR);
+            dc.clear();
 
             // TIME (drawn first so other elements render on top)
             drawTime(dc,
                      cx, 155 + (dc.getTextDimensions("00:00", Graphics.FONT_NUMBER_THAI_HOT)[1] as Lang.Number) / 2,
                      TIME_SCALE_X, TIME_SCALE_Y,
-                     TIME_COLOR_HH, TIME_COLOR_SEP, TIME_COLOR_MM,
+                     TIME_COLOR_HH, TIME_COLOR_SEP, TIME_COLOR_MM, BG_COLOR,
                      true);
 
             // STEPS (drawn after time so it sits on top)
