@@ -22,9 +22,31 @@ class WatchFaceView extends WatchUi.WatchFace {
     const TIME_COLOR_SEP = 0x888888;              // colon color   <-- tweak me
     const TIME_COLOR_MM  = Graphics.COLOR_BLACK;  // minutes color <-- tweak me
 
-    // Date circle position (awake mode)
-    const CIRC_X = 385;             // center X      <-- tweak me
-    const CIRC_Y = 120;             // center Y      <-- tweak me
+    // Steps display
+    const STEPS_X          = 45;                  // left edge X (px)      <-- tweak me
+    const STEPS_Y          = 28;                  // top edge Y (px)       <-- tweak me
+    const STEPS_ICON_SIZE  = 28;                  // icon height (px)      <-- tweak me
+    const STEPS_ICON_COLOR = 0xAAAAAA;            // icon color            <-- tweak me
+    const STEPS_TEXT_COLOR = 0xAAAAAA;            // number color          <-- tweak me
+    const STEPS_FONT = Graphics.FONT_NUMBER_MEDIUM; // FONT_XTINY/TINY/SMALL/MEDIUM/LARGE <-- tweak me
+
+    // Date circle
+    const CIRC_X         = 350;                  // center X                              <-- tweak me
+    const CIRC_Y         = 87;                  // center Y                              <-- tweak me
+    const CIRC_R         = 60;                   // radius (px)                           <-- tweak me
+    const CIRC_DAY_FONT  = Graphics.FONT_XTINY;  // day label font (FONT_XTINY/TINY/SMALL)<-- tweak me
+    const CIRC_DATE_FONT = Graphics.FONT_MEDIUM;  // date number font (FONT_TINY/SMALL/MEDIUM)<-- tweak me
+
+    // Battery widget (icon on top, % text below, centered at BATT_X)
+    const BATT_X         = 227;                  // center X (px)         <-- tweak me
+    //const BATT_Y         = 392;                  // top Y of icon (px)    <-- tweak me
+    const BATT_Y         = 372;                  // top Y of icon (px)    <-- tweak me
+    const BATT_W         = 44;                   // icon width (px)       <-- tweak me
+    const BATT_H         = 18;                   // icon height (px)      <-- tweak me
+    const BATT_FONT      = Graphics.FONT_LARGE;   // % text font           <-- tweak me
+    const BATT_OK_COLOR  = 0x00CC44;             // > 50% color           <-- tweak me
+    const BATT_MID_COLOR = Graphics.COLOR_YELLOW;// 21–50% color          <-- tweak me
+    const BATT_LOW_COLOR = Graphics.COLOR_RED;   // ≤ 20% color           <-- tweak me
 
     // AOD (always-on display) settings
     const AOD_BG_COLOR  = Graphics.COLOR_BLACK; // background    <-- tweak me
@@ -89,6 +111,68 @@ class WatchFaceView extends WatchUi.WatchFace {
         bdc.drawText(x - 1, y, font, str, Graphics.TEXT_JUSTIFY_LEFT);
         bdc.drawText(x + 1, y, font, str, Graphics.TEXT_JUSTIFY_LEFT);
         bdc.drawText(x,     y, font, str, Graphics.TEXT_JUSTIFY_LEFT);
+    }
+
+    // Fill a rotated ellipse using a 12-point polygon approximation.
+    // rx, ry = radii (float); angleDeg = clockwise rotation from vertical (float).
+    function fillOval(dc as Graphics.Dc,
+                      cx as Lang.Number, cy as Lang.Number,
+                      rx as Lang.Float, ry as Lang.Float,
+                      angleDeg as Lang.Float) as Void {
+        var theta = angleDeg * Math.PI / 180.0f;
+        var cosA  = Math.cos(theta);
+        var sinA  = Math.sin(theta);
+        var nPts  = 12;
+        var pts   = new [nPts];
+        for (var i = 0; i < nPts; i++) {
+            var t  = i.toFloat() * 2.0f * Math.PI / nPts.toFloat();
+            var ex = rx * Math.cos(t);
+            var ey = ry * Math.sin(t);
+            pts[i] = [
+                (cx + ex * cosA - ey * sinA).toNumber(),
+                (cy + ex * sinA + ey * cosA).toNumber()
+            ];
+        }
+        dc.fillPolygon(pts);
+    }
+
+    // Draw two shoe-print footsteps icon centered at (cx, cy).
+    // size controls overall height; color is the fill color.
+    function drawStepsIcon(dc as Graphics.Dc, cx as Lang.Number, cy as Lang.Number,
+                           size as Lang.Number, color as Lang.Number) as Void {
+        dc.setColor(color, Graphics.COLOR_TRANSPARENT);
+        var sf = size.toFloat();
+
+        // Shoe sole proportions (as fractions of size)
+        var soleRx  = sf * 0.16f;   // sole half-width
+        var soleRy  = sf * 0.28f;   // sole half-height
+        var heelRx  = sf * 0.09f;   // heel half-width
+        var heelRy  = sf * 0.07f;   // heel half-height
+        // Distance from sole center to heel center along the shoe axis
+        var heelDist = soleRy + sf * 0.05f + heelRy;
+
+        // Left shoe — upper-left, tilted -18° (leans left)
+        var lAngle = -18.0f;
+        var lCosA  = Math.cos(lAngle * Math.PI / 180.0f);
+        var lSinA  = Math.sin(lAngle * Math.PI / 180.0f);
+        var lx = cx - (sf * 0.20f).toNumber();
+        var ly = cy - (sf * 0.18f).toNumber();
+        fillOval(dc, lx, ly, soleRx, soleRy, lAngle);
+        // Heel follows the shoe axis downward
+        var lhx = lx + (lSinA * heelDist).toNumber();
+        var lhy = ly + (lCosA * heelDist).toNumber();
+        fillOval(dc, lhx, lhy, heelRx, heelRy, lAngle);
+
+        // Right shoe — lower-right, tilted +18° (leans right)
+        var rAngle = 18.0f;
+        var rCosA  = Math.cos(rAngle * Math.PI / 180.0f);
+        var rSinA  = Math.sin(rAngle * Math.PI / 180.0f);
+        var rx = cx + (sf * 0.20f).toNumber();
+        var ry = cy + (sf * 0.18f).toNumber();
+        fillOval(dc, rx, ry, soleRx, soleRy, rAngle);
+        var rhx = rx + (rSinA * heelDist).toNumber();
+        var rhy = ry + (rCosA * heelDist).toNumber();
+        fillOval(dc, rhx, rhy, heelRx, heelRy, rAngle);
     }
 
     // Render the time into a scaled BufferedBitmap and blit it to dc.
@@ -202,10 +286,20 @@ class WatchFaceView extends WatchUi.WatchFace {
                 var s = actInfo.steps;
                 if (s != null) { steps = s; }
             }
-            dc.setColor(0xAAAAAA, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(cx, 28, Graphics.FONT_SMALL,
-                        formatWithCommas(steps) + " steps",
-                        Graphics.TEXT_JUSTIFY_CENTER);
+            var stepsStr   = steps.toString();
+            var stepsDims  = dc.getTextDimensions(stepsStr, STEPS_FONT);
+            var stepsTextH = stepsDims[1] as Lang.Number;
+            var iconGap    = 4;
+            var rowH       = stepsTextH > STEPS_ICON_SIZE ? stepsTextH : STEPS_ICON_SIZE;
+            var rowCy      = STEPS_Y + rowH / 2;  // vertical center of the row
+
+            drawStepsIcon(dc, STEPS_X + STEPS_ICON_SIZE / 2, rowCy,
+                          STEPS_ICON_SIZE, STEPS_ICON_COLOR);
+
+            dc.setColor(STEPS_TEXT_COLOR, Graphics.COLOR_TRANSPARENT);
+            dc.drawText(STEPS_X + STEPS_ICON_SIZE + iconGap,
+                        rowCy - stepsTextH / 2,
+                        STEPS_FONT, stepsStr, Graphics.TEXT_JUSTIFY_LEFT);
 
             // DAY / DATE circle
             var now    = Gregorian.info(Time.now(), Time.FORMAT_SHORT);
@@ -213,48 +307,55 @@ class WatchFaceView extends WatchUi.WatchFace {
             var dayNames = ["", "SU", "MO", "TU", "WE", "TH", "FR", "SA"];
             var dayStr  = dayNum >= 1 && dayNum <= 7 ? dayNames[dayNum] : "--";
             var dateStr = now.day.toString();
-            var circR   = 42;
-
             dc.setColor(0x222222, Graphics.COLOR_TRANSPARENT);
-            dc.fillCircle(CIRC_X, CIRC_Y, circR);
+            dc.fillCircle(CIRC_X, CIRC_Y, CIRC_R);
             dc.setColor(0x0099FF, Graphics.COLOR_TRANSPARENT);
             dc.setPenWidth(2);
-            dc.drawCircle(CIRC_X, CIRC_Y, circR);
-            dc.setColor(0x0099FF, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(CIRC_X, CIRC_Y - 30, Graphics.FONT_XTINY, dayStr, Graphics.TEXT_JUSTIFY_CENTER);
-            dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(CIRC_X, CIRC_Y - 8,  Graphics.FONT_SMALL,  dateStr, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawCircle(CIRC_X, CIRC_Y, CIRC_R);
+            // Center both labels together vertically and horizontally in the circle
+            var dayH  = dc.getTextDimensions(dayStr,  CIRC_DAY_FONT)[1]  as Lang.Number;
+            var dateH = dc.getTextDimensions(dateStr, CIRC_DATE_FONT)[1] as Lang.Number;
+            var gap   = 2;
+            var blockH = dayH + gap + dateH;
+            var blockTop = CIRC_Y - blockH / 2;
 
-            // BATTERY
-            var sysStats = System.getSystemStats();
-            var batt     = sysStats.battery.toNumber();
+            dc.setColor(0x0099FF, Graphics.COLOR_TRANSPARENT);
+            dc.drawText(CIRC_X, blockTop, CIRC_DAY_FONT, dayStr, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+            dc.drawText(CIRC_X, blockTop + dayH + gap, CIRC_DATE_FONT, dateStr, Graphics.TEXT_JUSTIFY_CENTER);
+
+            // BATTERY — icon centered at BATT_X, text below
+            var sysStats  = System.getSystemStats();
+            var batt      = sysStats.battery.toNumber();
             var battColor;
             if (batt <= 20) {
-                battColor = Graphics.COLOR_RED;
+                battColor = BATT_LOW_COLOR;
             } else if (batt <= 50) {
-                battColor = Graphics.COLOR_YELLOW;
+                battColor = BATT_MID_COLOR;
             } else {
-                battColor = 0x00CC44;
+                battColor = BATT_OK_COLOR;
             }
 
-            var bx   = cx - 30;
-            var by   = 392;
-            var bw   = 44;
-            var bh   = 18;
-            var nubW = 4;
-            var nubH = 8;
-            var fillW = bw * batt / 100;
+            var bx    = BATT_X - BATT_W / 2;
+            var nubW  = 4;
+            var nubH  = BATT_H / 2;
+            var fillW = BATT_W * batt / 100;
             if (fillW < 1) { fillW = 1; }
 
+            // Charge fill
             dc.setColor(battColor, Graphics.COLOR_TRANSPARENT);
-            dc.fillRectangle(bx + 1, by + 1, fillW - 1, bh - 2);
+            dc.fillRectangle(bx + 1, BATT_Y + 1, fillW - 1, BATT_H - 2);
+
+            // Outline + nub
             dc.setPenWidth(1);
             dc.setColor(0x888888, Graphics.COLOR_TRANSPARENT);
-            dc.drawRectangle(bx, by, bw, bh);
-            dc.fillRectangle(bx + bw, by + (bh - nubH) / 2, nubW, nubH);
+            dc.drawRectangle(bx, BATT_Y, BATT_W, BATT_H);
+            dc.fillRectangle(bx + BATT_W, BATT_Y + (BATT_H - nubH) / 2, nubW, nubH);
+
+            // Percentage text centered below icon
             dc.setColor(battColor, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(bx + bw + nubW + 6, by - 1, Graphics.FONT_TINY,
-                        batt.toString() + "%", Graphics.TEXT_JUSTIFY_LEFT);
+            dc.drawText(BATT_X, BATT_Y + BATT_H + 4, BATT_FONT,
+                        batt.toString() + "%", Graphics.TEXT_JUSTIFY_CENTER);
         }
     }
 }
