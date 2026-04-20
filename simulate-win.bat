@@ -11,5 +11,8 @@ if %ERRORLEVEL% neq 0 (
     exit /b 1
 )
 
-echo Launching simulator...
+echo Checking simulator...
+powershell -Command "if (-not (Get-Process simulator -ErrorAction SilentlyContinue)) { Write-Host 'Starting simulator...'; Start-Process '%SDK_BIN%\simulator.exe'; Start-Sleep 3 } else { Write-Host 'Simulator already running.' }"
+
+echo Launching watch face...
 start "" "%SDK_BIN%\monkeydo.bat" build.prg epix2pro51mm
